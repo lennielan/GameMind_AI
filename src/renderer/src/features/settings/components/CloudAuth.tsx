@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../../../services/supabase.client'
 import { Cloud, LogOut, Loader2, AlertCircle } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import './CloudAuth.css'
 
 export function CloudAuth(): React.JSX.Element {
+  const { t } = useTranslation()
   const [session, setSession] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [authLoading, setAuthLoading] = useState(false)
@@ -105,7 +107,7 @@ export function CloudAuth(): React.JSX.Element {
     return (
       <div className="cloud-auth__loading">
         <Loader2 className="animate-spin" size={24} />
-        <span>Загрузка профиля...</span>
+        <span>{t('cloudAuth.loading')}</span>
       </div>
     )
   }
@@ -115,8 +117,8 @@ export function CloudAuth(): React.JSX.Element {
       <div className="cloud-auth__error">
         <AlertCircle size={24} />
         <div>
-          <h4>Cloud Sync недоступен</h4>
-          <p>Пожалуйста, настройте VITE_SUPABASE_URL и VITE_SUPABASE_ANON_KEY в файле .env</p>
+          <h4>{t('cloudAuth.unavailableTitle')}</h4>
+          <p>{t('cloudAuth.unavailableDesc')}</p>
         </div>
       </div>
     )
@@ -131,27 +133,27 @@ export function CloudAuth(): React.JSX.Element {
         {showSuccessModal && (
           <div className="cloud-auth__modal-overlay">
             <div className="cloud-auth__modal-content">
-              <h3>Добро пожаловать, {displayUsername}!</h3>
-              <p>Ваш облачный аккаунт успешно подключен.</p>
+              <h3>{t('cloudAuth.welcome', { name: displayUsername })}</h3>
+              <p>{t('cloudAuth.connectedSuccess')}</p>
               
               <div className="cloud-auth__modal-info">
                 <div className="cloud-auth__modal-row">
-                  <span>Ваш Email:</span>
+                  <span>{t('cloudAuth.yourEmail')}</span>
                   <strong>{session.user.email}</strong>
                 </div>
                 <div className="cloud-auth__modal-row">
-                  <span>Ваш системный ID:</span>
+                  <span>{t('cloudAuth.yourId')}</span>
                   <strong style={{fontSize: '11px'}}>{session.user.id}</strong>
                 </div>
                 {displayId ? (
                   <div className="cloud-auth__modal-row cloud-auth__modal-row--highlight">
-                    <span>Код для друзей:</span>
+                    <span>{t('cloudAuth.friendCode')}</span>
                     <strong>#{displayId}</strong>
                   </div>
                 ) : (
                   <div className="cloud-auth__modal-row cloud-auth__modal-row--warning">
-                    <span>Код для друзей:</span>
-                    <strong>Не сгенерирован (требуется SQL триггер)</strong>
+                    <span>{t('cloudAuth.friendCode')}</span>
+                    <strong>{t('cloudAuth.notGenerated')}</strong>
                   </div>
                 )}
               </div>
@@ -160,7 +162,7 @@ export function CloudAuth(): React.JSX.Element {
                 className="cloud-auth__btn cloud-auth__btn--primary"
                 onClick={() => setShowSuccessModal(false)}
               >
-                Отлично
+                {t('cloudAuth.btnOk')}
               </button>
             </div>
           </div>
@@ -169,7 +171,7 @@ export function CloudAuth(): React.JSX.Element {
         <div className="cloud-auth__header">
           <Cloud size={24} className="text-primary" />
           <div>
-            <h4>Подключено к GameMind AI</h4>
+            <h4>{t('cloudAuth.connectedTo')}</h4>
             <p>{session.user.email}</p>
           </div>
         </div>
@@ -180,20 +182,20 @@ export function CloudAuth(): React.JSX.Element {
         
         {displayId ? (
           <div className="cloud-auth__id-box">
-            <span className="cloud-auth__id-label">Ваш код для друзей:</span>
+            <span className="cloud-auth__id-label">{t('cloudAuth.friendCode')}</span>
             <div className="cloud-auth__id-value-group">
               <span className="cloud-auth__id-value">#{displayId}</span>
               <button 
                 className="cloud-auth__btn cloud-auth__btn--small"
                 onClick={() => navigator.clipboard.writeText(displayId.toString())}
               >
-                Скопировать
+                {t('cloudAuth.copyCode')}
               </button>
             </div>
           </div>
         ) : (
           <div className="cloud-auth__id-box">
-            <span className="cloud-auth__id-label" style={{color: '#fbbf24'}}>Ваш профиль еще обрабатывается. Если код не появился, убедитесь что в Supabase запущен SQL триггер.</span>
+            <span className="cloud-auth__id-label" style={{color: '#fbbf24'}}>{t('cloudAuth.processingWarning')}</span>
           </div>
         )}
 
@@ -203,7 +205,7 @@ export function CloudAuth(): React.JSX.Element {
           disabled={authLoading}
         >
           {authLoading ? <Loader2 className="animate-spin" size={16} /> : <LogOut size={16} />}
-          Выйти
+          {t('cloudAuth.logout')}
         </button>
       </div>
     )
@@ -214,8 +216,8 @@ export function CloudAuth(): React.JSX.Element {
       <div className="cloud-auth__header">
         <Cloud size={24} className="text-primary" />
         <div>
-          <h4>Cloud Sync</h4>
-          <p>Войдите для синхронизации Player DNA и поиска кооперативных игр с друзьями.</p>
+          <h4>{t('cloudAuth.title')}</h4>
+          <p>{t('cloudAuth.subtitle')}</p>
         </div>
       </div>
 
@@ -223,7 +225,7 @@ export function CloudAuth(): React.JSX.Element {
         {isSignUp && (
           <input
             type="text"
-            placeholder="Никнейм"
+            placeholder={t('cloudAuth.nickname')}
             value={nickname}
             onChange={(e) => setNickname(e.target.value)}
             required
@@ -240,7 +242,7 @@ export function CloudAuth(): React.JSX.Element {
         />
         <input
           type="password"
-          placeholder="Пароль"
+          placeholder={t('cloudAuth.password')}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -258,7 +260,7 @@ export function CloudAuth(): React.JSX.Element {
             {authLoading ? (
               <Loader2 className="animate-spin" size={16} />
             ) : (
-              isSignUp ? 'Зарегистрироваться' : 'Войти'
+              isSignUp ? t('cloudAuth.btnRegister') : t('cloudAuth.btnLogin')
             )}
           </button>
           <button 
@@ -267,7 +269,7 @@ export function CloudAuth(): React.JSX.Element {
             onClick={() => setIsSignUp(!isSignUp)}
             disabled={authLoading}
           >
-            {isSignUp ? 'Уже есть аккаунт? Войти' : 'Нет аккаунта? Создать'}
+            {isSignUp ? t('cloudAuth.hasAccount') : t('cloudAuth.noAccount')}
           </button>
         </div>
       </form>

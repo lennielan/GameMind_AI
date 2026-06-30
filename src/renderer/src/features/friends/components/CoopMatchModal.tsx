@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { UserProfile } from '../FriendsPage'
 import { X, Sparkles, Loader2, Gamepad2 } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import './CoopMatchModal.css'
 
 interface CoopMatchModalProps {
@@ -10,6 +11,7 @@ interface CoopMatchModalProps {
 }
 
 export function CoopMatchModal({ friend, onClose }: CoopMatchModalProps): React.JSX.Element {
+  const { t } = useTranslation()
   const [loading, setLoading] = useState(false)
   const [recommendations, setRecommendations] = useState<any>(null)
 
@@ -60,14 +62,14 @@ export function CoopMatchModal({ friend, onClose }: CoopMatchModalProps): React.
 
         <div className="coop-modal-header">
           <div className="coop-avatars">
-            <div className="avatar-me">Я</div>
+            <div className="avatar-me">{t('friends.modalMe')}</div>
             <div className="avatar-connector">
               <Sparkles size={16} />
             </div>
             <div className="avatar-friend">{friend.username.charAt(0).toUpperCase()}</div>
           </div>
-          <h2>Совместная игра с {friend.username}</h2>
-          <p>Давайте посмотрим, какие игры подойдут вам обоим.</p>
+          <h2>{t('friends.modalTitle', { name: friend.username })}</h2>
+          <p>{t('friends.modalSubtitle')}</p>
         </div>
 
         {!recommendations ? (
@@ -90,28 +92,28 @@ export function CoopMatchModal({ friend, onClose }: CoopMatchModalProps): React.
                     <text x="18" y="20.35" className="percentage">{matchPercent}%</text>
                   </svg>
                 </div>
-                <span>Совместимость</span>
+                <span>{t('friends.modalCompatibility')}</span>
               </div>
 
               <div className="dna-columns">
                 <div className="dna-column">
-                  <h4>Общие интересы</h4>
+                  <h4>{t('friends.modalShared')}</h4>
                   <div className="tags-list">
                     {sharedGenres.length > 0 ? sharedGenres.map((g: string) => (
                       <span key={g} className="tag tag--shared">{g}</span>
                     )) : (
-                      <span className="text-secondary">Нет общих жанров</span>
+                      <span className="text-secondary">{t('friends.modalNoShared')}</span>
                     )}
                   </div>
                 </div>
 
                 <div className="dna-column">
-                  <h4>Другу нравится</h4>
+                  <h4>{t('friends.modalFriendLikes')}</h4>
                   <div className="tags-list">
                     {friendUniqueGenres.length > 0 ? friendUniqueGenres.map((g: string) => (
                       <span key={g} className="tag">{g}</span>
                     )) : (
-                      <span className="text-secondary">Вы играете во всё то же самое</span>
+                      <span className="text-secondary">{t('friends.modalSame')}</span>
                     )}
                   </div>
                 </div>
@@ -126,12 +128,12 @@ export function CoopMatchModal({ friend, onClose }: CoopMatchModalProps): React.
               {loading ? (
                 <>
                   <Loader2 className="animate-spin" size={18} />
-                  Анализируем ДНК...
+                  {t('friends.modalGenerating')}
                 </>
               ) : (
                 <>
                   <Sparkles size={18} />
-                  Сгенерировать совместные рекомендации
+                  {t('friends.modalGenerate')}
                 </>
               )}
             </button>

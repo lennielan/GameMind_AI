@@ -5,5 +5,3 @@ out/
 *.db-journal
 *.db-wal
 *.log
-.env
-keys.json

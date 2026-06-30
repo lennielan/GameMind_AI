@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../services/supabase.client'
 import { Users, Cloud, Loader2, ArrowRight, Search, UserPlus, Check, X, Dna } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import './FriendsPage.css'
 import { CoopMatchModal } from './components/CoopMatchModal'
 
@@ -16,6 +17,7 @@ export interface UserProfile {
 
 export function FriendsPage(): React.JSX.Element {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const [session, setSession] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState<'friends' | 'requests' | 'search'>('friends')
@@ -110,7 +112,7 @@ export function FriendsPage(): React.JSX.Element {
     return (
       <div className="friends-page friends-page--loading">
         <Loader2 className="animate-spin" size={32} />
-        <p>Загрузка данных...</p>
+        <p>{t('friends.loading')}</p>
       </div>
     )
   }
@@ -122,16 +124,13 @@ export function FriendsPage(): React.JSX.Element {
           <div className="gatekeeper-icon-wrapper">
             <Cloud className="gatekeeper-icon text-primary" size={48} />
           </div>
-          <h2 className="gatekeeper-title">Откройте новые возможности!</h2>
-          <p className="gatekeeper-description">
-            Найдите напарников для совместной игры и подбирайте идеальные кооперативные проекты на основе вашего Player DNA.<br/>
-            Подключите бесплатный аккаунт GameMind для облачной синхронизации.
-          </p>
+          <h2 className="gatekeeper-title">{t('friends.gatekeeperTitle')}</h2>
+          <p className="gatekeeper-description" dangerouslySetInnerHTML={{ __html: t('friends.gatekeeperDesc') }} />
           <button 
             className="gatekeeper-btn"
             onClick={() => navigate('/settings')}
           >
-            Создать аккаунт GameMind
+            {t('friends.createAccount')}
             <ArrowRight size={18} />
           </button>
         </div>
@@ -144,7 +143,7 @@ export function FriendsPage(): React.JSX.Element {
       <header className="friends-page__header">
         <div className="friends-page__title-group">
           <Users size={28} className="text-primary" />
-          <h1>Друзья</h1>
+          <h1>{t('friends.title')}</h1>
         </div>
         
         <div className="friends-tabs">
@@ -152,19 +151,19 @@ export function FriendsPage(): React.JSX.Element {
             className={`friends-tab ${activeTab === 'friends' ? 'active' : ''}`}
             onClick={() => setActiveTab('friends')}
           >
-            Список друзей ({friends.length})
+            {t('friends.tabList', { count: friends.length })}
           </button>
           <button 
             className={`friends-tab ${activeTab === 'requests' ? 'active' : ''}`}
             onClick={() => setActiveTab('requests')}
           >
-            Заявки {requests.length > 0 && <span className="badge">{requests.length}</span>}
+            {t('friends.tabRequests')} {requests.length > 0 && <span className="badge">{requests.length}</span>}
           </button>
           <button 
             className={`friends-tab ${activeTab === 'search' ? 'active' : ''}`}
             onClick={() => setActiveTab('search')}
           >
-            Поиск
+            {t('friends.tabSearch')}
           </button>
         </div>
       </header>
@@ -182,10 +181,10 @@ export function FriendsPage(): React.JSX.Element {
                 {friends.length === 0 ? (
                   <div className="friends-empty">
                     <Users size={48} />
-                    <h3>У вас пока нет друзей</h3>
-                    <p>Перейдите во вкладку "Поиск", чтобы найти напарников.</p>
+                    <h3>{t('friends.noFriends')}</h3>
+                    <p>{t('friends.noFriendsDesc')}</p>
                     <button onClick={() => setActiveTab('search')} className="btn-primary">
-                      Найти друзей
+                      {t('friends.findFriends')}
                     </button>
                   </div>
                 ) : (
@@ -197,11 +196,11 @@ export function FriendsPage(): React.JSX.Element {
                         </div>
                         <div className="user-card__info">
                           <h4>{friend.username}</h4>
-                          <span className="user-card__id">#{friend.numeric_id || 'Не привязан'}</span>
+                          <span className="user-card__id">#{friend.numeric_id || t('friends.notLinked')}</span>
                         </div>
                         <button className="user-card__action btn-match">
                           <Dna size={16} />
-                          ИИ Совместимость
+                          {t('friends.aiMatch')}
                         </button>
                       </div>
                     ))}
@@ -215,7 +214,7 @@ export function FriendsPage(): React.JSX.Element {
               <div className="requests-list">
                 {requests.length === 0 ? (
                   <div className="friends-empty">
-                    <h3>Нет новых заявок</h3>
+                    <h3>{t('friends.noRequests')}</h3>
                   </div>
                 ) : (
                   <div className="users-grid">
@@ -226,20 +225,20 @@ export function FriendsPage(): React.JSX.Element {
                         </div>
                         <div className="user-card__info">
                           <h4>{req.username}</h4>
-                          <span className="user-card__id">Хочет добавить вас в друзья</span>
+                          <span className="user-card__id">{t('friends.wantsToAdd')}</span>
                         </div>
                         <div className="user-card__actions-group">
                           <button 
                             className="btn-icon btn-success" 
                             onClick={(e) => { e.stopPropagation(); handleAcceptRequest(req.id); }}
-                            title="Принять"
+                            title={t('friends.accept')}
                           >
                             <Check size={18} />
                           </button>
                           <button 
                             className="btn-icon btn-danger" 
                             onClick={(e) => { e.stopPropagation(); handleRejectRequest(req.id); }}
-                            title="Отклонить"
+                            title={t('friends.reject')}
                           >
                             <X size={18} />
                           </button>
@@ -259,7 +258,7 @@ export function FriendsPage(): React.JSX.Element {
                     <Search className="search-icon" size={20} />
                     <input 
                       type="text" 
-                      placeholder="Введите 6-значный ID друга..." 
+                      placeholder={t('friends.searchPlaceholder')} 
                       value={searchQuery}
                       maxLength={6}
                       pattern="\d*"
@@ -267,7 +266,7 @@ export function FriendsPage(): React.JSX.Element {
                     />
                   </div>
                   <button type="submit" className="btn-primary" disabled={isSearching || !searchQuery.trim()}>
-                    {isSearching ? <Loader2 className="animate-spin" size={18} /> : 'Найти'}
+                    {isSearching ? <Loader2 className="animate-spin" size={18} /> : t('friends.btnFind')}
                   </button>
                 </form>
 
@@ -284,21 +283,21 @@ export function FriendsPage(): React.JSX.Element {
                         </div>
                         <div className="user-card__info">
                           <h4>{user.username}</h4>
-                          <span className="user-card__id">#{user.numeric_id || 'Не привязан'}</span>
+                          <span className="user-card__id">#{user.numeric_id || t('friends.notLinked')}</span>
                         </div>
                         
                         {isFriend ? (
-                          <span className="status-badge status-badge--success">В друзьях</span>
+                          <span className="status-badge status-badge--success">{t('friends.statusFriend')}</span>
                         ) : isPendingIncoming ? (
                           <button className="btn-primary btn-small" onClick={() => handleAcceptRequest(user.id)}>
-                            Принять заявку
+                            {t('friends.btnAccept')}
                           </button>
                         ) : isPendingOutgoing ? (
-                          <span className="status-badge status-badge--pending">Заявка отправлена</span>
+                          <span className="status-badge status-badge--pending">{t('friends.statusPending')}</span>
                         ) : (
                           <button className="btn-primary btn-small" onClick={() => handleSendRequest(user.id)}>
                             <UserPlus size={16} />
-                            Добавить
+                            {t('friends.btnAdd')}
                           </button>
                         )}
                       </div>
