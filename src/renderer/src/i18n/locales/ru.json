@@ -1,0 +1,146 @@
+{
+  "sidebar": {
+    "dashboard": "Главная",
+    "library": "Библиотека",
+    "recommendations": "Рекомендации ИИ",
+    "playerDna": "ДНК Игрока",
+    "aiSearch": "ИИ Поиск",
+    "friends": "Друзья",
+    "settings": "Настройки"
+  },
+  "dashboard": {
+    "welcome": "Добро пожаловать",
+    "summary": "Ваша игровая сводка",
+    "setupPrompt": "Подключите ваш аккаунт Steam в настройках, чтобы начать работу",
+    "connectSteam": "Подключить Steam",
+    "stats": {
+      "totalPlaytime": "Всего наиграно",
+      "hours": "часов",
+      "libraryValue": "Стоимость библиотеки",
+      "gamesCount": "Всего игр",
+      "unplayedGems": "Несыгранные хиты",
+      "unplayed": "не сыграно",
+      "achievements": "Достижения",
+      "unlocked": "открыто",
+      "completionRate": "Процент прохождения",
+      "gamesPlayed": "Сыграно игр",
+      "avgPlaytime": "Среднее время"
+    },
+    "recentActivity": "Недавняя активность",
+    "viewAll": "Смотреть всю активность",
+    "recentlyPlayed": "недавно",
+    "totalPlayed": "Всего",
+    "quickInsights": "Быстрая аналитика",
+    "insightsPlaceholder": "ИИ-аналитика появится здесь после синхронизации вашей библиотеки",
+    "emptyActivity": "Подключите ваш Steam аккаунт, чтобы увидеть недавнюю активность"
+  },
+  "settings": {
+    "title": "Настройки",
+    "general": {
+      "title": "Основные",
+      "language": "Язык интерфейса"
+    },
+    "steam": {
+      "title": "Подключение Steam",
+      "loginBtn": "Войти через Steam",
+      "orManual": "или введите вручную:",
+      "steamIdLabel": "Steam ID (64-bit)",
+      "steamIdPlaceholder": "76561198...",
+      "apiKeyLabel": "Steam API Key",
+      "apiKeyRequired": "*Обязательно для полноценной работы",
+      "apiKeyWarning": "Внимание: Приложение не сможет правильно получить список ваших игр без API-ключа из-за настроек приватности Steam.",
+      "apiKeyLink": "Получить ключ можно здесь",
+      "apiKeyDomainHint": "(Вы можете ввести любой URL, например 'localhost', в поле домена).",
+      "apiKeyPlaceholder": "Введите ваш Steam API-ключ..."
+    },
+    "ai": {
+      "title": "Провайдер ИИ",
+      "providerLabel": "Провайдер",
+      "providers": {
+        "geminiDesc": "Gemini 2.0 (Встроенный, Бесплатно)",
+        "groqDesc": "Groq Llama 3 (Встроенный, Бесплатно)",
+        "openaiDesc": "GPT-4o (Свой ключ)",
+        "claudeDesc": "Claude Sonnet (Свой ключ)",
+        "openrouterDesc": "Разные модели (Свой ключ)",
+        "localDesc": "Локальная сеть (Бесплатно)"
+      },
+      "builtinReady": "Настройка не требуется! Всё готово к работе.",
+      "apiKeyLabel": "API Ключ",
+      "apiKeyPlaceholder": "Введите API-ключ для {{provider}}...",
+      "localUrlLabel": "URL локального сервера"
+    },
+    "appearance": {
+      "title": "Внешний вид",
+      "theme": "Тема",
+      "themes": {
+        "dark": "Тёмная",
+        "light": "Светлая",
+        "system": "Системная"
+      }
+    },
+    "sync": {
+      "title": "Синхронизация"
+    },
+    "dangerZone": {
+      "title": "Опасная зона",
+      "clearData": "Удалить все локальные данные и рекомендации"
+    },
+    "actions": {
+      "syncing": "Синхронизация...",
+      "syncNow": "Синхронизировать",
+      "save": "Сохранить",
+      "clear": "Очистить базу данных"
+    }
+  },
+  "recommendations": {
+    "title": "ИИ Рекомендации",
+    "regenerate": "Сгенерировать",
+    "loading": "Загрузка рекомендаций...",
+    "emptyTitle": "Во что поиграть дальше?",
+    "emptyDescription": "Позвольте ИИ проанализировать ваш ДНК Игрока и подобрать идеальные игры — как из вашего бэклога, так и совершенно новые открытия.",
+    "generating": "Анализ совпадений...",
+    "generateBtn": "Сгенерировать рекомендации",
+    "backlog": {
+      "title": "Из вашего бэклога",
+      "badge": "Несыгранные хиты"
+    },
+    "wishlist": {
+      "title": "Из списка желаемого",
+      "badge": "Высокий приоритет"
+    },
+    "discovery": {
+      "title": "Новые открытия",
+      "badge": "Вне вашей библиотеки"
+    },
+    "match": "Совпадение",
+    "playNow": "Играть",
+    "viewStore": "В магазин"
+  },
+  "library": {
+    "title": "Моя библиотека",
+    "search": "Поиск игр...",
+    "filters": {
+      "all": "Все",
+      "played": "Сыгранные",
+      "unplayed": "Несыгранные"
+    },
+    "playtime": "ч"
+  },
+  "dna": {
+    "loading": "Загрузка вашего ДНК Игрока...",
+    "emptyTitle": "Узнайте свой ДНК Игрока",
+    "emptyDescription": "Позвольте GameMind AI проанализировать вашу библиотеку Steam, чтобы раскрыть ваш уникальный игровой архетип, предпочтительные стили игры и поведенческие черты.",
+    "generating": "Анализ игр...",
+    "generateBtn": "Сгенерировать мой ДНК",
+    "badge": "Сгенерировано ИИ",
+    "coreTraits": "Основные черты",
+    "topGenres": "Топ жанры",
+    "playstyle": "Стиль игры",
+    "regenerate": "Обновить ДНК"
+  },
+  "privacy": {
+    "warningTitle": "Часть данных недоступна",
+    "warningMessage": "Достижения и список желаемого не удалось загрузить. Убедитесь, что настройки приватности вашего Steam профиля установлены на «Открытый» для полноценной работы приложения.",
+    "dismiss": "Понятно"
+  }
+}

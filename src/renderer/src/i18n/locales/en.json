@@ -1,0 +1,146 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "library": "Library",
+    "recommendations": "Recommendations",
+    "playerDna": "Player DNA",
+    "aiSearch": "AI Search",
+    "friends": "Friends",
+    "settings": "Settings"
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "summary": "Here's your gaming summary",
+    "setupPrompt": "Connect your Steam account in settings to get started",
+    "connectSteam": "Connect Steam Account",
+    "stats": {
+      "totalPlaytime": "Total Playtime",
+      "hours": "hours",
+      "libraryValue": "Library Value",
+      "gamesCount": "Total Games",
+      "unplayedGems": "Unplayed Gems",
+      "unplayed": "unplayed",
+      "achievements": "Achievements",
+      "unlocked": "unlocked",
+      "completionRate": "Completion Rate",
+      "gamesPlayed": "Games Played",
+      "avgPlaytime": "Avg. Playtime"
+    },
+    "recentActivity": "Recent Activity",
+    "viewAll": "View all activity",
+    "recentlyPlayed": "recently",
+    "totalPlayed": "Total",
+    "quickInsights": "Quick Insights",
+    "insightsPlaceholder": "AI insights will appear here after syncing your library",
+    "emptyActivity": "Connect your Steam account to see your recent gaming activity"
+  },
+  "settings": {
+    "title": "Settings",
+    "general": {
+      "title": "General",
+      "language": "Language"
+    },
+    "steam": {
+      "title": "Steam Connection",
+      "loginBtn": "Log in with Steam",
+      "orManual": "or enter manually:",
+      "steamIdLabel": "Steam ID (64-bit)",
+      "steamIdPlaceholder": "76561198...",
+      "apiKeyLabel": "Steam API Key",
+      "apiKeyRequired": "*Required for full functionality",
+      "apiKeyWarning": "Warning: The app cannot fetch your games properly without an API key due to Steam's privacy restrictions.",
+      "apiKeyLink": "Get your key here",
+      "apiKeyDomainHint": "(You can enter any url like 'localhost' in the domain field).",
+      "apiKeyPlaceholder": "Enter your Steam API key..."
+    },
+    "ai": {
+      "title": "AI Provider",
+      "providerLabel": "Provider",
+      "providers": {
+        "geminiDesc": "Gemini 2.0 (Built-in, Free)",
+        "groqDesc": "Groq Llama 3 (Built-in, Free)",
+        "openaiDesc": "GPT-4o (BYOK)",
+        "claudeDesc": "Claude Sonnet (BYOK)",
+        "openrouterDesc": "Various Models (BYOK)",
+        "localDesc": "Local Network (Free)"
+      },
+      "builtinReady": "No configuration needed! Ready to use.",
+      "apiKeyLabel": "API Key",
+      "apiKeyPlaceholder": "Enter your {{provider}} API key...",
+      "localUrlLabel": "Local Server URL"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "theme": "Theme",
+      "themes": {
+        "dark": "Dark",
+        "light": "Light",
+        "system": "System"
+      }
+    },
+    "sync": {
+      "title": "Sync"
+    },
+    "dangerZone": {
+      "title": "Danger Zone",
+      "clearData": "Clear all local data and recommendations"
+    },
+    "actions": {
+      "syncing": "Syncing...",
+      "syncNow": "Sync Now",
+      "save": "Save Settings",
+      "clear": "Clear Database"
+    }
+  },
+  "recommendations": {
+    "title": "AI Recommendations",
+    "regenerate": "Regenerate",
+    "loading": "Loading recommendations...",
+    "emptyTitle": "What to Play Next?",
+    "emptyDescription": "Let AI analyze your Player DNA and find the perfect games for you — both from your existing backlog and entirely new discoveries.",
+    "generating": "Analyzing matches...",
+    "generateBtn": "Generate Recommendations",
+    "backlog": {
+      "title": "From Your Backlog",
+      "badge": "Unplayed Gems"
+    },
+    "wishlist": {
+      "title": "From Your Wishlist",
+      "badge": "Highly Desired"
+    },
+    "discovery": {
+      "title": "New Discoveries",
+      "badge": "Outside Library"
+    },
+    "match": "Match",
+    "playNow": "Play Now",
+    "viewStore": "View in Store"
+  },
+  "library": {
+    "title": "My Library",
+    "search": "Search games...",
+    "filters": {
+      "all": "All",
+      "played": "Played",
+      "unplayed": "Unplayed"
+    },
+    "playtime": "h"
+  },
+  "dna": {
+    "loading": "Loading your Player DNA...",
+    "emptyTitle": "Discover Your Player DNA",
+    "emptyDescription": "Let GameMind AI analyze your entire Steam library to reveal your unique gaming archetype, preferred playstyles, and behavioral traits.",
+    "generating": "Analyzing Games...",
+    "generateBtn": "Generate My DNA",
+    "badge": "AI Generated",
+    "coreTraits": "Core Traits",
+    "topGenres": "Top Genres",
+    "playstyle": "Playstyle",
+    "regenerate": "Regenerate DNA"
+  },
+  "privacy": {
+    "warningTitle": "Some data may be unavailable",
+    "warningMessage": "Achievements and wishlist could not be loaded. Make sure your Steam profile privacy settings are set to Public for full functionality.",
+    "dismiss": "Got it"
+  }
+}

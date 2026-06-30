@@ -1,0 +1,28 @@
+appId: com.gamemind.ai
+productName: GameMind AI
+directories:
+  buildResources: build
+publish:
+  provider: github
+  owner: lennielan
+  repo: GameMind_AI
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!electron.vite.config.{js,ts,mjs,cjs}'
+  - '!{.eslintignore,.eslintrc.cjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
+  - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+asarUnpack:
+  - resources/**
+  - '**/*.node'
+win:
+  executableName: gamemind-ai
+  target:
+    - target: nsis
+      arch:
+        - x64
+nsis:
+  artifactName: ${name}-${version}-setup.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+  createDesktopShortcut: always

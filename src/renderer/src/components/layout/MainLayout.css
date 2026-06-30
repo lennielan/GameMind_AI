@@ -1,0 +1,45 @@
+/* ============================================================
+   Main Layout Styles
+   ============================================================ */
+
+.app-layout {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-layout__body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.app-layout__content {
+  flex: 1;
+  overflow: hidden;
+  padding-top: var(--titlebar-height);
+  position: relative;
+}
+
+.app-layout__content::before {
+  content: '';
+  position: absolute;
+  top: var(--titlebar-height);
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: var(--gradient-glow);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app-layout__scroll {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-8);
+  position: relative;
+  z-index: 1;
+}
