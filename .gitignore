@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+
+# Production and distribution builds
+dist/
+release/
+out/
+.vite/
+.cache/
+
+# SQLite databases, journals and shared memory
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Environment and sensitive keys
+.env
+.env.local
+.env.*
+!.env.example
+keys.json
+
+# Logs, crash dumps and heap snapshots
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.dump
+*.heapsnapshot
+
+# Temporary testing and local development scratch files
+test*.js
+test.txt
+check_*.js
+loaderData.json
+.agents/
+graphify-out/
+
+# OS metadata
+.DS_Store
+Thumbs.db

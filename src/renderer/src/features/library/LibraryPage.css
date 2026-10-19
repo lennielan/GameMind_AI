@@ -1,0 +1,266 @@
+.library {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-bottom: var(--space-12);
+}
+
+.library__header { position: relative; z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .library__header { position: relative; z-index: 20;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.library__title {
+  font-size: var(--font-2xl);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.library__count {
+  font-size: var(--font-lg);
+  font-weight: var(--weight-medium);
+  color: var(--text-tertiary);
+}
+
+.library__controls {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.library__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.library__search-icon {
+  position: absolute;
+  left: var(--space-3);
+  color: var(--text-tertiary);
+}
+
+.library__search-input {
+  padding: var(--space-2) var(--space-3) var(--space-2) calc(var(--space-8));
+  border-radius: var(--radius-full);
+  background: var(--surface-2);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-size: var(--font-sm);
+  outline: none;
+  transition: all var(--transition-fast);
+  width: 200px;
+}
+
+.library__search-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--accent-subtle);
+  width: 250px;
+}
+
+.library__control-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--font-sm);
+  font-weight: var(--weight-medium);
+  transition: all var(--transition-fast);
+}
+
+.library__control-btn:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+.library__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-5);
+}
+
+.library__loading,
+.library__empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12);
+  color: var(--text-tertiary);
+  font-size: var(--font-base);
+  gap: var(--space-4);
+}
+
+.library__connect-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background: var(--accent-primary);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-full, 9999px);
+  border: 1.5px solid var(--accent-primary);
+  cursor: pointer;
+  box-shadow: 0 4px 16px var(--accent-subtle, rgba(0, 0, 0, 0.15));
+  transition: all var(--transition-fast, 0.2s ease);
+  user-select: none;
+  outline: none;
+  margin-top: var(--space-2);
+}
+
+.library__connect-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px var(--accent-subtle);
+  filter: brightness(1.08);
+}
+
+.library__connect-btn:active {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
+.library__connect-btn:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+[data-theme="light"] .library__connect-btn {
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .library__connect-btn:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .library__connect-btn,
+[data-theme="midnight"] .library__connect-btn {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 16px var(--accent-subtle);
+}
+ 
+.library__sort {
+  position: relative;
+  z-index: 10;
+}
+
+.library__sort-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  font-size: var(--font-sm);
+  font-weight: var(--weight-medium);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.library__sort-btn:hover, .library__sort-btn.active {
+  background: var(--surface-3);
+  border-color: var(--accent-primary);
+}
+
+.library__sort-icon {
+  color: var(--text-secondary);
+  transition: transform var(--transition-base);
+}
+
+.library__sort-icon.open {
+  transform: rotate(180deg);
+}
+
+.library__sort-menu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  min-width: 200px;
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.library__sort-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  width: 100%;
+  text-align: left;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: var(--font-sm);
+  transition: all var(--transition-fast);
+}
+
+.library__sort-item:hover {
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+.library__sort-item.selected {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--accent-primary);
+  font-weight: var(--weight-medium);
+}
+
+.library__tabs {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.library__tab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: var(--font-lg);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.library__tab:hover {
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+.library__tab.active {
+  background: var(--surface-3);
+  color: var(--text-primary);
+}

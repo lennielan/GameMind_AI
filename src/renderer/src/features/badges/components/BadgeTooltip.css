@@ -1,0 +1,79 @@
+/* BadgeTooltip.css — Premium GameMind Floating Tooltip */
+
+.badge-tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.badge-tooltip-popover {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  width: max-content;
+  max-width: 280px;
+  padding: 12px 14px;
+  background: var(--surface-2, #181824);
+  border: 1px solid var(--border-default, rgba(255, 255, 255, 0.15));
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(16px);
+  pointer-events: none;
+  color: var(--text-primary, #ffffff);
+  display: flex;
+  flex-direction: column;
+}
+
+.badge-tooltip-popover::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--border-default, rgba(255, 255, 255, 0.15)) transparent transparent transparent;
+}
+
+.badge-tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.badge-tooltip-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.badge-tooltip-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.badge-tooltip-desc {
+  font-size: 12px;
+  color: var(--text-secondary, #bbbbcc);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.badge-tooltip-extra {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 11px;
+  color: var(--text-tertiary, #999);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

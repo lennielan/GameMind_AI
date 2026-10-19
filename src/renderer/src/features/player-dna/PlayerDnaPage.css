@@ -1,0 +1,331 @@
+/* ============================================================
+   PlayerDnaPage — Neo-Terminal / Industrial Tech Profile Styles
+   Crisp 1px borders, Segmented VU-meter layouts, telemetry badges
+   ============================================================ */
+
+.dna-page {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 40px;
+}
+
+.dna-page--centered {
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 140px);
+}
+
+/* ---- Loading State ---- */
+.dna-loader-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--surface-base, #121215);
+  border: 1px solid var(--border-default, #27272a);
+  border-radius: var(--radius-md, 6px);
+  padding: 32px 48px;
+}
+
+.dna-loader-spin {
+  color: var(--accent-primary, #8b5cf6);
+  animation: dnaSpin 1.2s linear infinite;
+}
+
+.dna-loader-text {
+  font-family: var(--font-family-mono, monospace);
+  font-size: 12.5px;
+  color: var(--text-secondary, #a1a1aa);
+}
+
+@keyframes dnaSpin {
+  100% { transform: rotate(360deg); }
+}
+
+/* ---- Empty State ---- */
+.dna-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 480px;
+  gap: 12px;
+  background-color: var(--surface-base, #121215);
+  border: 1px solid var(--border-default, #27272a);
+  border-radius: var(--radius-md, 6px);
+  padding: 36px 28px;
+}
+
+.dna-empty__icon-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-xs, 2px);
+  background-color: var(--surface-raised, #18181b);
+  border: 1px solid var(--border-default, #27272a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-primary, #8b5cf6);
+  margin-bottom: 4px;
+}
+
+.dna-empty__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary, #ffffff);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.dna-empty__description {
+  font-size: 13px;
+  color: var(--text-secondary, #a1a1aa);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dna-empty__action {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.dna-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-xs, 2px);
+  padding: 8px 12px;
+  color: var(--error, #ef4444);
+  font-size: 12px;
+  width: 100%;
+  text-align: left;
+}
+
+/* ---- Hero Profile Card ---- */
+.dna-hero {
+  background-color: var(--surface-base, #121215);
+  border: 1px solid var(--border-default, #27272a);
+  border-radius: var(--radius-md, 6px);
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dna-hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dna-hero__badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.dna-hero__persona {
+  font-family: var(--font-family-sans, sans-serif);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary, #ffffff);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px 0;
+}
+
+.dna-hero__description {
+  font-size: 13.5px;
+  color: var(--text-secondary, #a1a1aa);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dna-hero__dna-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-xs, 2px);
+  background-color: var(--surface-raised, #18181b);
+  border: 1px solid var(--border-default, #27272a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-primary, #8b5cf6);
+  flex-shrink: 0;
+}
+
+/* ---- Main Analytics Grid ---- */
+.dna-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 1024px) {
+  .dna-grid {
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  }
+}
+
+.dna-card {
+  background-color: var(--surface-base, #121215);
+  border: 1px solid var(--border-default, #27272a);
+  border-radius: var(--radius-md, 6px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dna-card__header {
+  margin-bottom: 16px;
+}
+
+.dna-card__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.dna-card__title {
+  font-family: var(--font-family-sans, sans-serif);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* ---- Traits List ---- */
+.dna-traits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dna-trait-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  border-radius: var(--radius-xs, 2px);
+  background-color: var(--surface-raised, #18181b);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.06));
+}
+
+.dna-trait-reasoning {
+  font-size: 12px;
+  color: var(--text-secondary, #a1a1aa);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0 2px;
+}
+
+/* ---- Genres & Playstyle ---- */
+.dna-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dna-no-data-text {
+  font-family: var(--font-family-mono, monospace);
+  font-size: 11px;
+  color: var(--text-muted, #71717a);
+}
+
+.dna-playstyle-box {
+  border-left: 2px solid var(--accent-primary, #8b5cf6);
+  background-color: var(--surface-raised, #18181b);
+  padding: 12px 14px;
+  border-radius: 0 var(--radius-xs, 2px) var(--radius-xs, 2px) 0;
+  border-top: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.04));
+  border-right: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.04));
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.04));
+}
+
+.dna-playstyle-text {
+  font-size: 12.5px;
+  color: var(--text-secondary, #a1a1aa);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dna-card__actions {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+/* ---- Error Modal ---- */
+.dna-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(9, 9, 11, 0.75);
+  padding: 16px;
+}
+
+.dna-modal-content {
+  background-color: var(--surface-base, #121215);
+  border: 1px solid var(--border-default, #27272a);
+  border-radius: var(--radius-md, 6px);
+  padding: 24px;
+  max-width: 440px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dna-modal-header {
+  margin-bottom: 4px;
+}
+
+.dna-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary, #ffffff);
+  margin: 0;
+}
+
+.dna-modal-desc {
+  font-size: 13px;
+  color: var(--text-secondary, #a1a1aa);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.dna-modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+/* ---- Light Theme Refinements ---- */
+:global([data-theme="light"]) .dna-playstyle-box {
+  background-color: var(--surface-raised, #f4f4f5);
+  border-color: var(--border-default, #d4d4d8);
+}
+
+:global([data-theme="light"]) .dna-trait-item {
+  background-color: var(--surface-raised, #f4f4f5);
+  border-color: var(--border-default, #d4d4d8);
+}

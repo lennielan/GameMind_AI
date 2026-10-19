@@ -1,0 +1,64 @@
+/* ============================================================
+   GameMind AI — Level 1: Primitive Tokens
+   Neo-Terminal / Industrial Tech Style Specification 2.0
+   ============================================================ */
+
+:root {
+  /* ---- True Neutral Zinc Palette (RGB Channels) ---- */
+  --color-zinc-950: 9, 9, 11;       /* #09090b - True graphite/charcoal canvas */
+  --color-zinc-900: 24, 24, 27;     /* #18181b - Surface L2 / inputs */
+  --color-zinc-850: 18, 18, 21;     /* #121215 - Surface L1 card base */
+  --color-zinc-800: 39, 39, 42;     /* #27272a - Surface L3 / active / hover */
+  --color-zinc-700: 63, 63, 70;     /* #3f3f46 - Strict 1px dividers */
+  --color-zinc-600: 82, 82, 91;     /* #52525b - Secondary text (light theme) */
+  --color-zinc-500: 113, 113, 122;  /* #71717a - Muted / telemetry prefix text */
+  --color-zinc-400: 161, 161, 170;  /* #a1a1aa - Secondary text (dark theme, WCAG AA) */
+  --color-zinc-300: 212, 212, 216;  /* #d4d4d8 - Strict 1px borders (light theme) */
+  --color-zinc-200: 228, 228, 231;  /* #e4e4e7 - Inactive meter track (light theme) */
+  --color-zinc-100: 244, 244, 245;  /* #f4f4f5 - Light canvas / dark primary text */
+  --color-zinc-50: 250, 250, 250;   /* #fafafa - Off-white surfaces */
+
+  --color-pure-black: 0, 0, 0;
+  --color-pure-white: 255, 255, 255;
+
+  /* Backward Compatibility Aliases */
+  --color-neutral-950: var(--color-zinc-950);
+  --color-neutral-900: var(--color-zinc-900);
+  --color-neutral-850: var(--color-zinc-850);
+  --color-neutral-800: var(--color-zinc-800);
+  --color-neutral-700: var(--color-zinc-700);
+  --color-neutral-600: var(--color-zinc-600);
+  --color-neutral-500: var(--color-zinc-500);
+  --color-neutral-400: var(--color-zinc-400);
+  --color-neutral-300: var(--color-zinc-300);
+  --color-neutral-200: var(--color-zinc-200);
+  --color-neutral-100: var(--color-zinc-100);
+  --color-neutral-50: var(--color-zinc-50);
+
+  /* ---- Primitive Accents (RGB Channels) ---- */
+  /* Emerald Accent: #10B981 */
+  --color-emerald-400: 52, 211, 153;
+  --color-emerald-500: 16, 185, 129;
+  --color-emerald-600: 5, 150, 105;
+
+  /* Crimson Accent: #F43F5E / #E11D48 */
+  --color-crimson-400: 251, 113, 133;
+  --color-crimson-500: 244, 63, 94;
+  --color-crimson-600: 225, 29, 72;
+
+  /* Azure Accent: #0EA5E9 / #06B6D4 */
+  --color-azure-400: 56, 189, 248;
+  --color-azure-500: 14, 165, 233;
+  --color-azure-600: 2, 132, 199;
+
+  /* Violet Accent: #8B5CF6 (restrained, technical, non-neon) */
+  --color-violet-400: 167, 139, 250;
+  --color-violet-500: 139, 92, 246;
+  --color-violet-600: 124, 58, 237;
+
+  /* ---- Static Accent Palette Tokens ---- */
+  --accent-emerald: #10b981;
+  --accent-crimson: #f43f5e;
+  --accent-azure: #0ea5e9;
+  --accent-violet: #8b5cf6;
+}

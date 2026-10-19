@@ -1,0 +1,226 @@
+/* ============================================================
+   GameMind AI — AI Thinking Loader Component Styles
+   Theme-neutral, crisp on Light & Dark modes, glowing accents
+   ============================================================ */
+
+.ai-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-10) var(--space-8);
+  margin-bottom: var(--space-8);
+  border-radius: var(--radius-2xl);
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
+  transition: all var(--transition-base);
+}
+
+/* Accent Glow Aura behind the loader */
+.ai-loader__glow {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0, 0, 0, 0) 70%);
+  opacity: 0.5;
+  filter: blur(40px);
+  pointer-events: none;
+  animation: pulse-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0.65;
+  }
+}
+
+/* Central Brain / AI Core Orb */
+.ai-loader__core {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-6);
+}
+
+.ai-loader__svg-rings {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ai-loader__icon-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-primary);
+  box-shadow: 0 0 30px var(--accent-glow);
+}
+
+.ai-loader__brain-icon {
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 0 8px var(--accent-primary));
+}
+
+/* Floating Cyber-Orbital Particles */
+.ai-loader__particle {
+  position: absolute;
+  color: var(--accent-primary);
+  pointer-events: none;
+}
+
+.ai-loader__particle--1 {
+  top: 15%;
+  left: 18%;
+}
+
+.ai-loader__particle--2 {
+  bottom: 20%;
+  right: 16%;
+}
+
+.ai-loader__particle--3 {
+  top: 22%;
+  right: 20%;
+}
+
+/* Content & Typography */
+.ai-loader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 580px;
+  z-index: 2;
+}
+
+.ai-loader__title {
+  font-size: var(--font-xl);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+  margin-bottom: var(--space-2);
+}
+
+.ai-loader__subtitle-container {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.ai-loader__subtitle {
+  font-size: var(--font-md);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+
+.ai-loader__dot-spinner {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.ai-loader__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  animation: dot-bounce 1.4s infinite ease-in-out both;
+}
+
+.ai-loader__dot:nth-child(1) { animation-delay: -0.32s; }
+.ai-loader__dot:nth-child(2) { animation-delay: -0.16s; }
+.ai-loader__dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes dot-bounce {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* Sleek Progress Bar Track */
+.ai-loader__bar-track {
+  width: 260px;
+  height: 4px;
+  background: var(--surface-3);
+  border-radius: var(--radius-full);
+  margin-top: var(--space-6);
+  overflow: hidden;
+  position: relative;
+}
+
+.ai-loader__bar-fill {
+  height: 100%;
+  width: 40%;
+  background: var(--gradient-accent);
+  border-radius: var(--radius-full);
+  position: absolute;
+  animation: bar-scan 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+@keyframes bar-scan {
+  0% { left: -40%; width: 30%; }
+  50% { width: 50%; }
+  100% { left: 100%; width: 30%; }
+}
+
+/* Skeleton Grid Styling */
+.recs-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  width: 100%;
+}
+
+.recs-skeleton-card {
+  height: 280px;
+  border-radius: var(--radius-lg);
+  background: var(--surface-1);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.recs-skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--surface-1) 0%,
+    var(--surface-2) 50%,
+    var(--surface-1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

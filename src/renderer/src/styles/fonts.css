@@ -1,0 +1,36 @@
+/* ============================================================
+   GameMind AI — Global Font Faces
+   TT Paplane Trial (Regular & Thin)
+   ============================================================ */
+
+@font-face {
+  font-family: 'TT Paplane Trial';
+  src: url('../assets/fonts/TT_Paplane_Trial_Regular.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Paplane Trial';
+  src: url('../assets/fonts/TT_Paplane_Trial_Thin.ttf') format('truetype');
+  font-weight: 100 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Paplane';
+  src: url('../assets/fonts/TT_Paplane_Trial_Regular.ttf') format('truetype');
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Paplane';
+  src: url('../assets/fonts/TT_Paplane_Trial_Thin.ttf') format('truetype');
+  font-weight: 100 300;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,229 @@
+/* ============================================================
+   About Tab — Neo-Terminal / Industrial Tech
+   ============================================================ */
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.description {
+  font-size: var(--font-base, 13px);
+  color: var(--text-secondary, #a1a1aa);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.sectionHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.metaTag {
+  font-family: var(--font-family-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary, #71717a);
+  letter-spacing: 0.06em;
+}
+
+.cardsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.linkCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--surface-2, #18181b);
+  border: 1px solid var(--border-default, #27272a);
+  border-radius: var(--radius-md, 6px);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  width: 100%;
+  outline: none;
+}
+
+.linkCard:hover {
+  background: var(--surface-hover, #27272a);
+  border-color: var(--border-strong, #3f3f46);
+  transform: translateY(-1px);
+}
+
+.cardIconBadge {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm, 4px);
+  background: var(--surface-1, #121215);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary, #ffffff);
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+}
+
+.linkCard:hover .cardIconBadge {
+  border-color: var(--border-strong, #3f3f46);
+  color: #ffffff;
+}
+
+.cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+}
+
+.cardTag {
+  font-family: var(--font-family-mono, monospace);
+  font-size: 11px;
+  color: var(--text-tertiary, #71717a);
+}
+
+.cardSubtitle {
+  font-family: var(--font-family-mono, monospace);
+  font-size: 12px;
+  color: var(--text-secondary, #a1a1aa);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cardAction {
+  color: var(--text-tertiary, #71717a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: color 0.15s ease;
+}
+
+.linkCard:hover .cardAction {
+  color: var(--text-primary, #ffffff);
+}
+
+/* Repo Card with Crimson-Red Accent */
+.linkCardRepo {
+  border-color: rgba(225, 29, 72, 0.35);
+  background: rgba(225, 29, 72, 0.03);
+}
+
+.linkCardRepo:hover {
+  background: rgba(225, 29, 72, 0.08);
+  border-color: #e11d48;
+}
+
+.cardIconBadgeRepo {
+  background: rgba(225, 29, 72, 0.1);
+  border-color: rgba(225, 29, 72, 0.3);
+}
+
+.starIcon {
+  color: #e11d48;
+  fill: #e11d48;
+}
+
+.repoActionTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(225, 29, 72, 0.12);
+  border: 1px solid rgba(225, 29, 72, 0.3);
+  font-family: var(--font-family-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  color: #fb7185;
+}
+
+.starIconSmall {
+  color: #e11d48;
+  fill: #e11d48;
+}
+
+.cardActionRepo {
+  color: #fb7185;
+}
+
+.linkCardRepo:hover .cardActionRepo {
+  color: #ffffff;
+}
+
+/* Specs Telemetry */
+.specsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.specItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  background: var(--surface-2, #18181b);
+  border: 1px solid var(--border-default, #27272a);
+  border-radius: var(--radius-md, 6px);
+}
+
+.specLabel {
+  font-family: var(--font-family-mono, monospace);
+  font-size: 11px;
+  color: var(--text-tertiary, #71717a);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.specValue {
+  font-family: var(--font-family-mono, monospace);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary, #ffffff);
+}
+
+/* Light Theme overrides */
+:global([data-theme="light"]) .linkCard {
+  background: #ffffff;
+  border-color: var(--border-default, #d4d4d8);
+}
+
+:global([data-theme="light"]) .linkCard:hover {
+  background: #f4f4f5;
+  border-color: #a1a1aa;
+}
+
+:global([data-theme="light"]) .cardIconBadge {
+  background: #f4f4f5;
+  border-color: var(--border-default, #d4d4d8);
+  color: #09090b;
+}
+
+:global([data-theme="light"]) .specItem {
+  background: #ffffff;
+  border-color: var(--border-default, #d4d4d8);
+}

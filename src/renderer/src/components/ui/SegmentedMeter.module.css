@@ -1,0 +1,131 @@
+/* ============================================================
+   SegmentedMeter — Hardware VU-Meter / Equalizer Scale
+   Neo-Terminal / Industrial Tech Player DNA Metric
+   ============================================================ */
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  user-select: none;
+}
+
+/* ---- Terminal Labels ---- */
+.labelTag {
+  font-family: var(--font-family-mono, monospace);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary, #a1a1aa);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.bracket {
+  color: var(--text-muted, #71717a);
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+/* ---- Value Readout ---- */
+.valueTag {
+  font-family: var(--font-family-mono, monospace);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* ---- Segments Track ---- */
+.track {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 80px;
+  gap: 2px;
+  padding: 2px 0;
+}
+
+.trackInteractive {
+  cursor: pointer;
+}
+
+/* ---- Segment Tick ---- */
+.segment {
+  flex: 1;
+  border-radius: 1px;
+  background-color: var(--meter-track, #27272a);
+  transition: background-color 100ms ease-out, transform 100ms ease-out;
+}
+
+/* Sizes */
+.sizeSm .segment {
+  height: 12px;
+}
+
+.sizeMd .segment {
+  height: 16px;
+}
+
+.sizeLg .segment {
+  height: 22px;
+}
+
+/* ---- Active Segments ---- */
+.segmentActive {
+  background-color: var(--accent-primary, #8b5cf6);
+}
+
+/* Accent Overrides */
+.accentWhite .segmentActive {
+  background-color: var(--text-primary, #ffffff);
+}
+
+.accentEmerald .segmentActive {
+  background-color: #10b981;
+}
+
+.accentCrimson .segmentActive {
+  background-color: #f43f5e;
+}
+
+.accentAzure .segmentActive {
+  background-color: #0ea5e9;
+}
+
+.accentViolet .segmentActive {
+  background-color: #8b5cf6;
+}
+
+/* Interactive Hover */
+.trackInteractive .segment:hover {
+  filter: brightness(1.25);
+  transform: scaleY(1.15);
+}
+
+/* ---- Light Theme Adjustments ---- */
+:global([data-theme="light"]) .segment {
+  background-color: var(--meter-track, #e4e4e7);
+}
+
+:global([data-theme="light"]) .labelTag {
+  color: var(--text-secondary, #52525b);
+}
+
+:global([data-theme="light"]) .valueTag {
+  color: var(--text-primary, #09090b);
+}
+
+:global([data-theme="light"]) .accentWhite .segmentActive {
+  background-color: var(--color-zinc-950, #09090b);
+}

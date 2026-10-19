@@ -1,0 +1,1152 @@
+/* ============================================================
+   GameMind AI — Grand Timeline Modern Zig-Zag Styles
+   Theme-adaptive, glassmorphic, alternating desktop layout
+   ============================================================ */
+
+/* ---- Page Layout ---- */
+.timeline-page-content {
+  padding: var(--space-8) var(--space-6) var(--space-16) var(--space-6);
+  max-width: 1240px;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+}
+
+/* ---- Header & Eyebrow ---- */
+.timeline__header {
+  margin-bottom: var(--space-10);
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--accent-subtle, rgba(var(--accent-primary-rgb), 0.1));
+  border: 1px solid var(--border-default, rgba(var(--accent-primary-rgb), 0.2));
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-3);
+  backdrop-filter: blur(8px);
+}
+
+.timeline__title {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  margin-bottom: var(--space-2);
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.timeline__subtitle {
+  color: var(--text-secondary);
+  font-size: var(--font-md);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.timeline__actions {
+  margin-top: var(--space-6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timeline__usage-counter {
+  position: fixed;
+  top: 54px;
+  right: var(--space-8);
+  z-index: 30;
+}
+
+.btn-generate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background: var(--accent-primary);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-full, 9999px);
+  border: 1.5px solid var(--accent-primary);
+  cursor: pointer;
+  box-shadow: 0 4px 16px var(--accent-subtle, rgba(0, 0, 0, 0.15));
+  transition: all var(--transition-fast, 0.2s ease);
+  user-select: none;
+  outline: none;
+}
+
+.btn-generate:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px var(--accent-subtle);
+  filter: brightness(1.08);
+}
+
+.btn-generate:active:not(:disabled) {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
+.btn-generate:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+.btn-generate:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+[data-theme="light"] .btn-generate {
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .btn-generate:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .btn-generate,
+[data-theme="midnight"] .btn-generate {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 16px var(--accent-subtle);
+}
+
+/* ---- States (Loading / Empty) ---- */
+.timeline__state-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-16) var(--space-4);
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.timeline__state-icon-box {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-2xl);
+  background: var(--surface-raised, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+
+.timeline__state-title {
+  font-size: var(--font-xl);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.timeline__state-desc {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ----------------------------------------------------
+   FILTER TOOLBAR
+---------------------------------------------------- */
+.timeline-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-12);
+  flex-wrap: wrap;
+  padding: 6px;
+  background: var(--glass-bg, rgba(var(--surface-base-rgb), 0.6));
+  backdrop-filter: var(--glass-backdrop, blur(16px));
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.timeline-filters__label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: var(--space-3);
+  padding-right: var(--space-2);
+  font-size: var(--font-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.timeline-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.timeline-filter-btn:hover {
+  color: var(--text-primary);
+  background: var(--surface-raised, rgba(255, 255, 255, 0.05));
+}
+
+.timeline-filter-btn.active {
+  background: var(--accent-subtle);
+  color: var(--accent-primary);
+  border-color: var(--border-default, rgba(var(--accent-primary-rgb), 0.3));
+  font-weight: var(--weight-semibold);
+}
+
+.timeline-filter-badge {
+  font-size: 10px;
+  background: var(--surface-overlay, rgba(255, 255, 255, 0.1));
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+}
+
+/* ----------------------------------------------------
+   TIMELINE SPINE & ZIG-ZAG ARCHITECTURE
+---------------------------------------------------- */
+.timeline-spine-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: var(--space-4);
+}
+
+/* Central vertical glowing line */
+.timeline-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(
+    180deg, 
+    transparent 0%, 
+    var(--accent-primary) 8%, 
+    var(--accent-hover) 85%, 
+    transparent 100%
+  );
+  opacity: 0.45;
+  box-shadow: 0 0 12px var(--accent-glow);
+  z-index: 1;
+}
+
+.timeline-nodes-list {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+/* Base Node Wrapper */
+.timeline-node {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+/* Left Node (desktop: width 50%, aligned to right of the column) */
+.timeline-node--left {
+  justify-content: flex-start;
+}
+
+.timeline-node--left .timeline-node__card-wrapper {
+  width: calc(50% - 44px);
+  margin-right: auto;
+}
+
+/* Right Node (desktop: width 50%, aligned to left of the right column) */
+.timeline-node--right {
+  justify-content: flex-end;
+}
+
+.timeline-node--right .timeline-node__card-wrapper {
+  width: calc(50% - 44px);
+  margin-left: auto;
+}
+
+/* Center Node (Hero / Legacy) */
+.timeline-node--center {
+  justify-content: center;
+}
+
+.timeline-node--center .timeline-node__card-wrapper {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+/* Node Center Spine Marker */
+.timeline-node__marker {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface-base, #12121a);
+  border: 2px solid var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  transition: all var(--transition-fast);
+}
+
+.timeline-node__marker-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-node__marker:hover {
+  transform: translateX(-50%) scale(1.2);
+  box-shadow: 0 0 20px currentColor;
+}
+
+/* Connector Line between Marker and Card */
+.timeline-node__connector {
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity var(--transition-fast);
+}
+
+.timeline-node__connector--left {
+  right: 36px;
+  width: 26px;
+}
+
+.timeline-node__connector--right {
+  left: 36px;
+  width: 26px;
+}
+
+.timeline-node:hover .timeline-node__connector {
+  opacity: 0.9;
+}
+
+/* Date Tag next to spine */
+.timeline-node__date-tag {
+  position: absolute;
+  top: 30px;
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.timeline-node__date-tag--left {
+  left: calc(50% + 28px);
+}
+
+.timeline-node__date-tag--right {
+  right: calc(50% + 28px);
+}
+
+/* ----------------------------------------------------
+   1. HERO EPOCH CARD
+---------------------------------------------------- */
+.epoch-card {
+  position: relative;
+  background: var(--glass-bg, rgba(var(--surface-base-rgb), 0.75));
+  backdrop-filter: var(--glass-backdrop, blur(20px));
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.epoch-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  box-shadow: 0 20px 48px var(--accent-glow, rgba(var(--accent-primary-rgb), 0.2));
+}
+
+.epoch-card__ambient-glow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--warning-subtle, rgba(251, 191, 36, 0.15)), transparent 70%);
+  pointer-events: none;
+}
+
+.epoch-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.epoch-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-xs);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--warning, #fbbf24);
+}
+
+.epoch-card__genre-pill {
+  background: var(--warning-subtle, rgba(251, 191, 36, 0.15));
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: var(--warning, #fbbf24);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+}
+
+.epoch-card__ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--text-tertiary);
+  background: var(--surface-raised, rgba(255, 255, 255, 0.04));
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+}
+
+.epoch-card__title {
+  font-size: var(--font-2xl);
+  font-weight: var(--weight-extrabold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+  line-height: 1.2;
+}
+
+.epoch-card__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.epoch-stat {
+  background: var(--surface-raised, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.epoch-stat__icon-box {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  display: flex;
+}
+
+.epoch-stat__info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.epoch-stat__value {
+  font-size: var(--font-md);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.epoch-stat__value--compact {
+  font-size: var(--font-xs);
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.epoch-stat__label {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* AI Quote Block */
+.epoch-card__narrative {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: var(--surface-raised, rgba(255, 255, 255, 0.04));
+  border-left: 3px solid var(--warning, #fbbf24);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.epoch-card__quote-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--warning, #fbbf24);
+  opacity: 0.8;
+}
+
+.epoch-card__quote-text {
+  flex: 1;
+  font-size: var(--font-xs);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Top Games Grid in Era */
+.epoch-card__games-section {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.epoch-card__section-label {
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+
+.epoch-card__games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: var(--space-2);
+}
+
+.epoch-game-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.epoch-game-item__thumb {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-overlay);
+}
+
+.epoch-game-item__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-fast);
+}
+
+.epoch-game-item:hover .epoch-game-item__thumb img {
+  transform: scale(1.06);
+}
+
+.epoch-game-item__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+.epoch-game-item__hours {
+  position: absolute;
+  bottom: 3px;
+  right: 4px;
+  font-size: 9px;
+  font-weight: var(--weight-bold);
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1px 4px;
+  border-radius: var(--radius-sm);
+  backdrop-filter: blur(4px);
+}
+
+.epoch-game-item__name {
+  font-size: 10px;
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Shards */
+.epoch-card__shards {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.epoch-shard {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--warning-subtle, rgba(251, 191, 36, 0.1));
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  color: var(--warning, #fbbf24);
+}
+
+.epoch-shard__icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ----------------------------------------------------
+   2. MILESTONE CARD (Defining Game)
+---------------------------------------------------- */
+.milestone-card {
+  position: relative;
+  background: var(--glass-bg, rgba(var(--surface-base-rgb), 0.75));
+  backdrop-filter: var(--glass-backdrop, blur(20px));
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  transition: all var(--transition-base);
+}
+
+.milestone-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 20px 48px var(--accent-glow);
+}
+
+.milestone-card__banner {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  background: var(--surface-overlay);
+}
+
+.milestone-card__banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: transform var(--transition-slow);
+}
+
+.milestone-card:hover .milestone-card__banner-img {
+  transform: scale(1.04);
+}
+
+.milestone-card__banner-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(var(--surface-base-rgb), 0.4) 50%,
+    var(--surface-base) 100%
+  );
+}
+
+.milestone-card__content {
+  position: relative;
+  padding: var(--space-4) var(--space-5) var(--space-5) var(--space-5);
+  margin-top: -30px;
+  z-index: 2;
+}
+
+.milestone-card__header-badges {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-2);
+}
+
+.milestone-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--warning-subtle, rgba(251, 191, 36, 0.15));
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  color: var(--warning, #fbbf24);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(6px);
+}
+
+.milestone-card__hours-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--accent-subtle);
+  border: 1px solid var(--border-default, rgba(var(--accent-primary-rgb), 0.3));
+  color: var(--accent-primary);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  backdrop-filter: blur(6px);
+}
+
+.milestone-card__title {
+  font-size: var(--font-xl);
+  font-weight: var(--weight-extrabold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+  line-height: 1.2;
+}
+
+.milestone-card__quote-box {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background: var(--surface-raised, rgba(255, 255, 255, 0.04));
+  border-left: 3px solid var(--accent-primary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-3);
+}
+
+.milestone-card__quote-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent-primary);
+  opacity: 0.8;
+}
+
+.milestone-card__quote-text {
+  flex: 1;
+  font-size: var(--font-xs);
+  line-height: 1.5;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+.milestone-card__hypothesis {
+  background: rgba(var(--accent-primary-rgb), 0.08);
+  border: 1px solid rgba(var(--accent-primary-rgb), 0.2);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.milestone-card__hypothesis-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.milestone-card__hypothesis-text {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.milestone-card__shards {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: var(--space-2);
+}
+
+.milestone-card__shards-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.milestone-card__shards-list {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.milestone-shard-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface-raised, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--border-subtle);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+.milestone-shard-badge__icon {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+/* ----------------------------------------------------
+   3. MICRO EVENT CARD (Yearly / Milestones)
+---------------------------------------------------- */
+.micro-event-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: var(--glass-bg, rgba(var(--surface-base-rgb), 0.75));
+  backdrop-filter: var(--glass-backdrop, blur(16px));
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  transition: all var(--transition-base);
+}
+
+.micro-event-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.micro-event-card--yearly {
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+.micro-event-card__media {
+  position: relative;
+  width: 80px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-raised);
+}
+
+.micro-event-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.micro-event-card__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.micro-event-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.micro-event-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.micro-event-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-primary);
+}
+
+.micro-event-card__genre {
+  font-size: 10px;
+  color: var(--text-tertiary);
+  background: var(--surface-raised, rgba(255, 255, 255, 0.04));
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.micro-event-card__title {
+  font-size: var(--font-md);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.micro-event-card__game-subtitle {
+  font-size: var(--font-xs);
+  color: var(--text-secondary);
+  font-weight: var(--weight-normal);
+}
+
+.micro-event-card__narrative {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.micro-event-card__metrics {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: 2px;
+}
+
+.micro-metric {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+
+.micro-metric--sparkle {
+  color: var(--info, #60a5fa);
+}
+
+/* ----------------------------------------------------
+   4. GRAND LEGACY CARD (Finale)
+---------------------------------------------------- */
+.legacy-card {
+  position: relative;
+  background: var(--glass-bg, rgba(var(--surface-base-rgb), 0.85));
+  backdrop-filter: var(--glass-backdrop, blur(24px));
+  border: 1px solid var(--border-default, rgba(var(--accent-primary-rgb), 0.35));
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8) var(--space-8);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+}
+
+.legacy-card__glow-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 0%, 
+    rgba(var(--accent-primary-rgb), 0.25) 0%, 
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.legacy-card__header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.legacy-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-subtle);
+  border: 1px solid var(--border-default, rgba(var(--accent-primary-rgb), 0.4));
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  font-weight: var(--weight-bold);
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-3);
+}
+
+.legacy-card__title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: var(--weight-extrabold);
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.legacy-card__body {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.legacy-card__narrative {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  background: var(--surface-raised, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5) var(--space-6);
+  text-align: left;
+}
+
+.legacy-card__quote-icon {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--accent-primary);
+  opacity: 0.8;
+}
+
+.legacy-card__quote-text {
+  flex: 1;
+  font-size: var(--font-md);
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.legacy-card__prediction {
+  background: rgba(var(--accent-primary-rgb), 0.08);
+  border: 1px solid rgba(var(--accent-primary-rgb), 0.25);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4) var(--space-6);
+  text-align: left;
+}
+
+.legacy-card__prediction-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.legacy-card__prediction-header h4 {
+  font-size: var(--font-xs);
+  font-weight: var(--weight-bold);
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.legacy-card__prediction-text {
+  font-size: var(--font-sm);
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.legacy-card__empty p {
+  color: var(--text-tertiary);
+  font-size: var(--font-sm);
+}
+
+/* ----------------------------------------------------
+   RESPONSIVE (Mobile / Tablet Fallback < 960px)
+---------------------------------------------------- */
+@media (max-width: 960px) {
+  .timeline-page-content {
+    padding-top: var(--space-12);
+  }
+
+  .timeline__usage-counter {
+    position: static;
+    margin-bottom: var(--space-4);
+    display: flex;
+    justify-content: center;
+  }
+
+  .timeline-spine {
+    left: 24px;
+    transform: none;
+  }
+
+  .timeline-node {
+    justify-content: flex-start !important;
+    padding-left: 56px;
+  }
+
+  .timeline-node__card-wrapper {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .timeline-node__marker {
+    left: 24px;
+    transform: translateX(-50%) !important;
+  }
+
+  .timeline-node__connector {
+    display: none;
+  }
+
+  .timeline-node__date-tag {
+    left: 56px !important;
+    right: auto !important;
+    top: -20px;
+  }
+
+  .epoch-card__stats {
+    grid-template-columns: 1fr;
+  }
+}

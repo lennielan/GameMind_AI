@@ -1,0 +1,347 @@
+.overlayContainer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: rgba(var(--bg-app-rgb), 0.85);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+}
+
+/* Ambient glow accents */
+.ambientGlowTop {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-subtle) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.ambientGlowBottom {
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--accent-primary-rgb), 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* Main Card */
+.overlayCard {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: var(--surface-1);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2xl, 24px);
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--border-subtle);
+  overflow: hidden;
+}
+
+/* Top decorative subtle light line */
+.overlayCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+  opacity: 0.6;
+}
+
+/* Status Badge */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full, 9999px);
+  background: var(--warning-subtle, rgba(251, 191, 36, 0.12));
+  border: 1px solid rgba(251, 191, 36, 0.22);
+  margin-bottom: 24px;
+}
+
+/* Smooth, gentle breathing status dot (No abrupt jumps) */
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--warning, #f59e0b);
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+  animation: smoothBreath 2.8s ease-in-out infinite;
+}
+
+@keyframes smoothBreath {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 7px rgba(245, 158, 11, 0.6);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+    box-shadow: 0 0 2px rgba(245, 158, 11, 0.2);
+  }
+}
+
+.statusText {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--warning, #d97706);
+}
+
+/* Redesigned Premium Icon Presentation */
+.iconOuterWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 22px;
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+.iconRadarRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px dashed var(--border-strong);
+  opacity: 0.5;
+  animation: slowSpin 25s linear infinite;
+}
+
+.iconCoreContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 30%, rgba(var(--accent-primary-rgb), 0.12) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+.iconGlow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-subtle) 0%, transparent 70%);
+  opacity: 0.7;
+}
+
+.iconMain {
+  position: relative;
+  color: var(--accent-primary);
+  width: 34px;
+  height: 34px;
+}
+
+.iconSlashBadge {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--surface-1);
+  border: 1.5px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.iconSlashDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--error, #ef4444);
+  box-shadow: 0 0 6px var(--error, #ef4444);
+}
+
+/* Typography */
+.title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.description {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin-bottom: 22px;
+  max-width: 410px;
+}
+
+/* Info / Tips Card */
+.tipsCard {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg, 14px);
+  padding: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.tipRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.tipIcon {
+  flex-shrink: 0;
+  color: var(--accent-primary);
+  margin-top: 2px;
+}
+
+.tipIconInfo {
+  flex-shrink: 0;
+  color: var(--info, #38bdf8);
+  margin-top: 2px;
+}
+
+.tipText {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* Action Area */
+.actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.retryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--accent-primary);
+  border: none;
+  border-radius: var(--radius-lg, 12px);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(var(--accent-primary-rgb), 0.35);
+}
+
+.retryButton:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(var(--accent-primary-rgb), 0.45);
+}
+
+.retryButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.retryButton:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.spinIcon {
+  animation: spin 1s linear infinite;
+}
+
+/* Animations */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes slowSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Light theme fine-tuning for maximum contrast and polish */
+[data-theme="light"] .statusBadge {
+  background: rgba(217, 119, 6, 0.1);
+  border-color: rgba(217, 119, 6, 0.22);
+}
+
+[data-theme="light"] .statusText {
+  color: #b45309;
+}
+
+[data-theme="light"] .statusDot {
+  background-color: #d97706;
+  box-shadow: 0 0 6px rgba(217, 119, 6, 0.5);
+}
+
+[data-theme="light"] .overlayCard {
+  box-shadow: 0 20px 40px -15px rgba(28, 32, 45, 0.12), 0 2px 10px rgba(28, 32, 45, 0.06);
+}
+
+[data-theme="light"] .iconCoreContainer {
+  background: radial-gradient(circle at 50% 30%, rgba(var(--accent-primary-rgb), 0.15) 0%, #eef0f5 100%);
+  box-shadow: 0 4px 16px rgba(28, 32, 45, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="light"] .iconSlashBadge {
+  background: #f8f9fb;
+  border-color: rgba(28, 32, 45, 0.14);
+}

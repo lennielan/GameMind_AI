@@ -1,0 +1,98 @@
+/* ============================================================
+   HardwareBadge — Premium Theme-Adaptive Hardware Rating Badge
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.01em;
+  width: fit-content;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  user-select: none;
+  line-height: 1;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+/* --- High Performance (Emerald / Zap) --- */
+.badgeHigh {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.26);
+  color: #34d399;
+}
+
+.badgeHigh .icon {
+  color: #34d399;
+}
+
+/* --- Fine / Smooth (Emerald / Check) --- */
+.badgeFine {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  color: #34d399;
+}
+
+.badgeFine .icon {
+  color: #34d399;
+}
+
+/* --- Might Struggle (Amber / Alert) --- */
+.badgeStruggle {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  color: #fbbf24;
+}
+
+.badgeStruggle .icon {
+  color: #fbbf24;
+}
+
+/* --- Neutral / Default --- */
+.badgeDefault {
+  background: var(--surface-2);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.badgeDefault .icon {
+  color: var(--accent-primary);
+}
+
+/* --- Light Theme Contrast Overrides --- */
+:global([data-theme="light"]) .badgeHigh {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #047857;
+}
+
+:global([data-theme="light"]) .badgeHigh .icon {
+  color: #059669;
+}
+
+:global([data-theme="light"]) .badgeFine {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #047857;
+}
+
+:global([data-theme="light"]) .badgeFine .icon {
+  color: #059669;
+}
+
+:global([data-theme="light"]) .badgeStruggle {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: #b45309;
+}
+
+:global([data-theme="light"]) .badgeStruggle .icon {
+  color: #d97706;
+}

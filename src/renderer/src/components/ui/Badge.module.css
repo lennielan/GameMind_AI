@@ -1,0 +1,178 @@
+/* ============================================================
+   Badge — Neo-Terminal / Industrial Tech Badge & Tag Component
+   Strict 1px borders, 2px radius, monospace telemetry typography
+   ============================================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: var(--radius-xs, 2px);
+  font-family: var(--font-family-mono, monospace);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  user-select: none;
+  width: fit-content;
+  border: 1px solid transparent;
+  transition: border-color var(--transition-fast, 150ms ease-out), background-color var(--transition-fast, 150ms ease-out);
+}
+
+/* ---- Content Wrapper for clean icon/text gap ---- */
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  line-height: 1;
+}
+
+/* ---- Sizes ---- */
+.sizeXs {
+  font-size: 10px;
+  padding: 2px 6px;
+}
+
+.sizeSm {
+  font-size: 11px;
+  padding: 3px 8px;
+}
+
+.sizeMd {
+  font-size: 12px;
+  padding: 4px 10px;
+}
+
+/* ---- Variants ---- */
+.variantDefault {
+  background-color: var(--surface-raised, #18181b);
+  border-color: var(--border-default, #27272a);
+  color: var(--text-secondary, #a1a1aa);
+}
+
+.variantOutline {
+  background-color: transparent;
+  border-color: var(--border-default, #27272a);
+  color: var(--text-primary, #ffffff);
+}
+
+.variantOutline:hover {
+  border-color: var(--border-strong, #3f3f46);
+}
+
+.variantAccent {
+  background-color: var(--accent-subtle, rgba(139, 92, 246, 0.12));
+  border-color: var(--accent-border, rgba(139, 92, 246, 0.28));
+  color: var(--accent-primary, #8b5cf6);
+}
+
+.variantSuccess {
+  background-color: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #10b981;
+}
+
+.variantWarning {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #f59e0b;
+}
+
+.variantDanger {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.variantMuted {
+  background-color: transparent;
+  border-color: var(--border-subtle, rgba(255, 255, 255, 0.08));
+  color: var(--text-muted, #71717a);
+}
+
+/* ---- Terminal Bracket Styling ---- */
+.bracket {
+  color: var(--text-muted, #71717a);
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+/* ---- Status Indicator Dot ---- */
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background-color: currentColor;
+}
+
+.dotPulse {
+  animation: telemetryDotPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes telemetryDotPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+}
+
+.variantDefault .dot {
+  background-color: var(--text-secondary, #a1a1aa);
+}
+
+.variantAccent .dot {
+  background-color: var(--accent-primary, #8b5cf6);
+}
+
+.variantSuccess .dot {
+  background-color: #10b981;
+}
+
+.variantWarning .dot {
+  background-color: #f59e0b;
+}
+
+.variantDanger .dot {
+  background-color: #ef4444;
+}
+
+/* ---- Telemetry Prefix ---- */
+.prefix {
+  color: var(--text-muted, #71717a);
+  font-weight: 400;
+  margin-right: 2px;
+}
+
+/* ---- Light Theme Adjustments ---- */
+:global([data-theme="light"]) .variantDefault {
+  background-color: var(--surface-raised, #f4f4f5);
+  border-color: var(--border-default, #d4d4d8);
+  color: var(--text-secondary, #52525b);
+}
+
+:global([data-theme="light"]) .variantOutline {
+  background-color: transparent;
+  border-color: var(--border-default, #d4d4d8);
+  color: var(--text-primary, #09090b);
+}
+
+:global([data-theme="light"]) .variantSuccess {
+  color: #059669;
+  border-color: rgba(5, 150, 105, 0.3);
+}
+
+:global([data-theme="light"]) .variantWarning {
+  color: #d97706;
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+:global([data-theme="light"]) .variantDanger {
+  color: #dc2626;
+  border-color: rgba(220, 38, 38, 0.3);
+}

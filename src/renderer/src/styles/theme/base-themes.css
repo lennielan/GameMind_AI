@@ -1,0 +1,210 @@
+/* ============================================================
+   GameMind AI — Level 2: Base Themes (Dark, Light, Midnight)
+   Neo-Terminal / Industrial Tech Architecture
+   ============================================================ */
+
+/* ---- Dark Theme (Default Canvas #09090B) ---- */
+[data-theme="dark"],
+:root:not([data-theme]) {
+  --bg-app-rgb: var(--color-zinc-950);
+  --bg-sidebar-rgb: var(--color-zinc-900);
+  --surface-base-rgb: var(--color-zinc-850);
+  --surface-raised-rgb: var(--color-zinc-900);
+  --surface-overlay-rgb: var(--color-zinc-800);
+
+  /* Core Surfaces */
+  --bg-app: #09090b;             /* Canvas: true charcoal graphite */
+  --bg-sidebar: #0e0e12;         /* Matte sidebar panel */
+  --surface-base: #121215;       /* Card Surface L1 */
+  --surface-raised: #18181b;     /* Inputs / Nested Surface L2 */
+  --surface-overlay: #27272a;    /* Active / Modal / L3 */
+
+  /* Backward Compatibility Aliases */
+  --bg-primary: var(--bg-app);
+  --bg-secondary: var(--bg-sidebar);
+  --bg-tertiary: #18181b;
+  --bg-elevated: #1e1e24;
+  --bg-hover: #27272a;
+  --bg-active: #323238;
+
+  --surface-1: var(--surface-base);
+  --surface-2: var(--surface-raised);
+  --surface-3: var(--surface-overlay);
+
+  /* Precise 1px Borders */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-default: #27272a;     /* border-zinc-800 */
+  --border-strong: #3f3f46;      /* border-zinc-700 */
+  --border-focus: #52525b;       /* border-zinc-600 */
+
+  /* Typography (High Contrast) */
+  --text-primary-rgb: 255, 255, 255;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;     /* zinc-400: minimum WCAG AA */
+  --text-tertiary: #71717a;      /* zinc-500: telemetry / prefixes */
+  --text-muted: #71717a;
+  --text-disabled: #52525b;
+  --text-inverse: #09090b;
+
+  /* Button Tokens */
+  --btn-primary-bg: #f4f4f5;     /* zinc-100 */
+  --btn-primary-text: #09090b;   /* zinc-950 */
+  --btn-primary-hover: #e4e4e7;  /* zinc-200 */
+  --btn-secondary-bg: #18181b;   /* zinc-900 */
+  --btn-secondary-border: #3f3f46; /* zinc-700 */
+  --btn-secondary-text: #d4d4d8; /* zinc-300 */
+  --btn-secondary-hover: #27272a;/* zinc-800 */
+
+  /* Telemetry & Segmented Meter Tokens */
+  --meter-track: #27272a;        /* zinc-800: inactive segment */
+  --meter-active: var(--accent-primary);
+  --meter-label: #a1a1aa;
+
+  /* Status Colors */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #0ea5e9;
+
+  /* Restrained Glass/Overlay */
+  --gradient-surface: linear-gradient(180deg, #121215 0%, #0e0e12 100%);
+  --glass-bg: rgba(18, 18, 21, 0.92);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-backdrop: blur(12px);
+
+  color-scheme: dark;
+}
+
+/* ---- Light Theme (Technical Blueprint: #F4F4F5 / #FFFFFF) ---- */
+[data-theme="light"] {
+  --bg-app-rgb: var(--color-zinc-100);
+  --bg-sidebar-rgb: var(--color-zinc-200);
+  --surface-base-rgb: var(--color-pure-white);
+  --surface-raised-rgb: var(--color-zinc-100);
+  --surface-overlay-rgb: var(--color-zinc-200);
+
+  /* Core Surfaces */
+  --bg-app: #f4f4f5;             /* Technical Blueprint Canvas */
+  --bg-sidebar: #eaebee;         /* Clean blueprint sidebar */
+  --surface-base: #ffffff;       /* L1 Cards: Crisp white */
+  --surface-raised: #f4f4f5;     /* L2 Nested panels: zinc-100 */
+  --surface-overlay: #e4e4e7;    /* L3 Overlays / Popovers: zinc-200 */
+
+  /* Backward Compatibility Aliases */
+  --bg-primary: var(--bg-app);
+  --bg-secondary: var(--bg-sidebar);
+  --bg-tertiary: #e4e4e7;
+  --bg-elevated: #ffffff;
+  --bg-hover: #e4e4e7;
+  --bg-active: #d4d4d8;
+
+  --surface-1: var(--surface-base);
+  --surface-2: var(--surface-raised);
+  --surface-3: var(--surface-overlay);
+
+  /* Precise 1px Technical Blueprint Borders */
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-default: #d4d4d8;     /* border-zinc-300 */
+  --border-strong: #a1a1aa;      /* border-zinc-400 */
+  --border-focus: #71717a;       /* border-zinc-500 */
+
+  /* Typography (High Contrast) */
+  --text-primary-rgb: 9, 9, 11;
+  --text-primary: #09090b;       /* zinc-950: maximum contrast */
+  --text-secondary: #52525b;     /* zinc-600 */
+  --text-tertiary: #71717a;      /* zinc-500: telemetry / prefixes */
+  --text-muted: #71717a;
+  --text-disabled: #a1a1aa;
+  --text-inverse: #ffffff;
+
+  /* Button Tokens (Inverted in light) */
+  --btn-primary-bg: #09090b;     /* zinc-950 */
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #27272a;  /* zinc-800 */
+  --btn-secondary-bg: #ffffff;
+  --btn-secondary-border: #d4d4d8; /* border-zinc-300 */
+  --btn-secondary-text: #27272a; /* zinc-800 */
+  --btn-secondary-hover: #f4f4f5;/* zinc-100 */
+
+  /* Telemetry & Segmented Meter Tokens */
+  --meter-track: #e4e4e7;        /* zinc-200: inactive segment in light */
+  --meter-active: var(--accent-primary);
+  --meter-label: #52525b;
+
+  /* Status Colors */
+  --success: #059669;
+  --warning: #d97706;
+  --error: #dc2626;
+  --info: #0284c7;
+
+  /* Restrained Blueprint Overlays */
+  --gradient-surface: linear-gradient(180deg, #ffffff 0%, #f4f4f5 100%);
+  --glass-bg: rgba(255, 255, 255, 0.94);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-backdrop: blur(12px);
+
+  color-scheme: light;
+}
+
+/* ---- Midnight / AMOLED Theme ---- */
+[data-theme="midnight"] {
+  --bg-app-rgb: var(--color-pure-black);
+  --bg-sidebar-rgb: 5, 5, 5;
+  --surface-base-rgb: 10, 10, 12;
+  --surface-raised-rgb: 18, 18, 20;
+  --surface-overlay-rgb: 26, 26, 28;
+
+  --bg-app: #000000;
+  --bg-sidebar: #050505;
+  --surface-base: #0c0c0e;
+  --surface-raised: #141416;
+  --surface-overlay: #1e1e22;
+
+  --bg-primary: var(--bg-app);
+  --bg-secondary: var(--bg-sidebar);
+  --bg-tertiary: #141416;
+  --bg-elevated: #1a1a1e;
+  --bg-hover: #222226;
+  --bg-active: #2a2a30;
+
+  --surface-1: var(--surface-base);
+  --surface-2: var(--surface-raised);
+  --surface-3: var(--surface-overlay);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --border-focus: rgba(255, 255, 255, 0.32);
+
+  --text-primary-rgb: 255, 255, 255;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #71717a;
+  --text-muted: #71717a;
+  --text-disabled: #52525b;
+  --text-inverse: #000000;
+
+  --btn-primary-bg: #ffffff;
+  --btn-primary-text: #000000;
+  --btn-primary-hover: #e4e4e7;
+  --btn-secondary-bg: #141416;
+  --btn-secondary-border: #27272a;
+  --btn-secondary-text: #d4d4d8;
+  --btn-secondary-hover: #222226;
+
+  --meter-track: #1e1e22;
+  --meter-active: var(--accent-primary);
+  --meter-label: #a1a1aa;
+
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #0ea5e9;
+
+  --gradient-surface: linear-gradient(180deg, #0c0c0e 0%, #050505 100%);
+  --glass-bg: rgba(12, 12, 14, 0.94);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-backdrop: blur(12px);
+
+  color-scheme: dark;
+}

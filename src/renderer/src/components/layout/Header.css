@@ -1,0 +1,108 @@
+/* ============================================================
+   Header / Neo-Terminal Titlebar Styles
+   Matte solid background, crisp 1px border-bottom, telemetry fonts
+   ============================================================ */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--titlebar-height, 40px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: var(--bg-app, #09090b);
+  border-bottom: 1px solid var(--border-default, #27272a);
+  user-select: none;
+}
+
+.header__drag-region {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-app-region: drag;
+}
+
+.header__sync-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 14px;
+  -webkit-app-region: no-drag;
+  z-index: 1;
+}
+
+.header__sync-spinner-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.header__sync-icon--spinning {
+  width: 11px;
+  height: 11px;
+  display: block;
+  flex-shrink: 0;
+  transform-origin: 50% 50%;
+  animation: headerSyncRotate 1.2s linear infinite;
+  will-change: transform;
+}
+
+@keyframes headerSyncRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.header__sync-text {
+  font-family: var(--font-family-mono, monospace);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.header__controls {
+  display: flex;
+  height: 100%;
+  -webkit-app-region: no-drag;
+  z-index: 1;
+}
+
+.header__control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 100%;
+  color: var(--text-secondary, #a1a1aa);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color var(--transition-fast, 150ms ease-out), color var(--transition-fast, 150ms ease-out);
+}
+
+.header__control:hover {
+  background-color: var(--surface-overlay, #27272a);
+  color: var(--text-primary, #ffffff);
+}
+
+.header__control--close:hover {
+  background-color: var(--error, #ef4444);
+  color: #ffffff;
+}
+
+:global([data-theme="light"]) .header {
+  background-color: var(--bg-app, #f4f4f5);
+  border-bottom-color: var(--border-default, #d4d4d8);
+}

@@ -1,0 +1,201 @@
+/* ============================================================
+   FriendsList Styles
+   ============================================================ */
+
+.friends-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 16px);
+  width: 100%;
+}
+
+.friends-list__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: var(--space-3, 12px);
+}
+
+.friends-list--compact .friends-list__grid {
+  grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+  gap: 10px;
+}
+
+.friends-list__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 8px;
+  border-radius: var(--radius-lg, 12px);
+  background: var(--surface-2, rgba(255, 255, 255, 0.04));
+  border: 1px solid var(--border-default, rgba(255, 255, 255, 0.08));
+  cursor: pointer;
+  transition: all var(--transition-fast, 0.2s ease);
+  position: relative;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.friends-list--full .friends-list__grid {
+  max-height: 360px;
+  overflow-y: auto;
+  padding-right: var(--space-2, 8px);
+}
+
+.friends-list__item:hover {
+  background: var(--surface-hover, rgba(255, 255, 255, 0.08));
+  border-color: var(--accent-primary, #a855f7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px var(--accent-glow, rgba(168, 85, 247, 0.15));
+}
+
+.friends-list__avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--surface-3, rgba(255, 255, 255, 0.08));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border-default, rgba(255, 255, 255, 0.12));
+  flex-shrink: 0;
+  position: relative;
+}
+
+.friends-list--compact .friends-list__avatar {
+  width: 48px;
+  height: 48px;
+}
+
+.friends-list__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.friends-list__avatar span {
+  font-size: var(--font-lg, 18px);
+  font-weight: var(--weight-bold, 700);
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.friends-list__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.friends-list__name {
+  font-size: var(--font-sm, 13px);
+  font-weight: var(--weight-medium, 500);
+  color: var(--text-primary);
+  width: 100%;
+  text-align: center;
+  word-break: break-word;
+  white-space: normal;
+  line-height: 1.25;
+}
+
+.friends-list__loading,
+.friends-list__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3, 12px);
+  padding: var(--space-6, 24px);
+  background: var(--surface-2);
+  border-radius: var(--radius-lg, 12px);
+  text-align: center;
+}
+
+.friends-list__show-more {
+  align-self: center;
+  padding: var(--space-2, 8px) var(--space-4, 16px);
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full, 9999px);
+  color: var(--text-secondary);
+  font-size: var(--font-sm, 13px);
+  font-weight: var(--weight-medium, 500);
+  cursor: pointer;
+  transition: all var(--transition-fast, 0.2s ease);
+}
+
+.friends-list__show-more:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+}
+
+.friends-list__online-dot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #22c55e;
+  border: 2px solid var(--surface-2, #18181f);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+  animation: online-pulse 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+.friends-list__last-seen {
+  font-size: 10px;
+  margin-top: 2px;
+  width: 100%;
+  color: var(--text-tertiary);
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.friends-list__game-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: var(--accent-primary, #a855f7);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1.25;
+  letter-spacing: 0.2px;
+  text-align: center;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.friends-list__game-status--compact {
+  margin-top: 4px;
+  padding: 3px 8px;
+  border-radius: var(--radius-full, 9999px);
+  background: var(--accent-subtle, rgba(168, 85, 247, 0.12));
+  border: 1px solid var(--accent-glow, rgba(168, 85, 247, 0.25));
+  box-shadow: 0 0 10px var(--accent-glow, rgba(168, 85, 247, 0.15));
+  transition: all var(--transition-fast, 0.15s ease);
+}
+
+.friends-list__game-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-primary, #a855f7);
+  flex-shrink: 0;
+}
+
+.friends-list__game-icon {
+  filter: drop-shadow(0 0 4px var(--accent-glow, rgba(168, 85, 247, 0.4)));
+}
+
+.friends-list__game-name {
+  color: var(--accent-primary, #a855f7);
+  font-weight: 600;
+  word-break: break-word;
+  white-space: normal;
+  text-align: center;
+}

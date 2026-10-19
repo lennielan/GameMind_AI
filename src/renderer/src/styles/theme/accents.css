@@ -1,0 +1,89 @@
+/* ============================================================
+   GameMind AI — Level 2: Dynamic Accent Tokens
+   Restrained, Industrial Tech (Violet, Crimson, Emerald, Azure)
+   ============================================================ */
+
+/* ---- Violet (Default Accent) ---- */
+[data-accent="violet"],
+:root:not([data-accent]) {
+  --accent-primary-rgb: var(--color-violet-500);
+  --accent-hover-rgb: var(--color-violet-400);
+  --accent-active-rgb: var(--color-violet-600);
+
+  --accent-primary: #8b5cf6;
+  --accent-hover: #a78bfa;
+  --accent-active: #7c3aed;
+  --accent-current: #8b5cf6;
+
+  --accent-subtle: rgba(139, 92, 246, 0.12);
+  --accent-border: rgba(139, 92, 246, 0.28);
+  --accent-contrast: #ffffff;
+
+  /* Backward Compatibility Aliases */
+  --accent-glow: rgba(139, 92, 246, 0.18);
+  --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+  --gradient-glow: radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246, 0.08) 0%, transparent 60%);
+}
+
+/* ---- Crimson Accent ---- */
+[data-accent="crimson"] {
+  --accent-primary-rgb: var(--color-crimson-500);
+  --accent-hover-rgb: var(--color-crimson-400);
+  --accent-active-rgb: var(--color-crimson-600);
+
+  --accent-primary: #f43f5e;
+  --accent-hover: #fb7185;
+  --accent-active: #e11d48;
+  --accent-current: #f43f5e;
+
+  --accent-subtle: rgba(244, 63, 94, 0.12);
+  --accent-border: rgba(244, 63, 94, 0.28);
+  --accent-contrast: #ffffff;
+
+  /* Backward Compatibility Aliases */
+  --accent-glow: rgba(244, 63, 94, 0.18);
+  --gradient-accent: linear-gradient(135deg, #f43f5e 0%, #fb7185 100%);
+  --gradient-glow: radial-gradient(ellipse at 50% 0%, rgba(244, 63, 94, 0.08) 0%, transparent 60%);
+}
+
+/* ---- Emerald Accent ---- */
+[data-accent="emerald"] {
+  --accent-primary-rgb: var(--color-emerald-500);
+  --accent-hover-rgb: var(--color-emerald-400);
+  --accent-active-rgb: var(--color-emerald-600);
+
+  --accent-primary: #10b981;
+  --accent-hover: #34d399;
+  --accent-active: #059669;
+  --accent-current: #10b981;
+
+  --accent-subtle: rgba(16, 185, 129, 0.12);
+  --accent-border: rgba(16, 185, 129, 0.28);
+  --accent-contrast: #ffffff;
+
+  /* Backward Compatibility Aliases */
+  --accent-glow: rgba(16, 185, 129, 0.18);
+  --gradient-accent: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+  --gradient-glow: radial-gradient(ellipse at 50% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 60%);
+}
+
+/* ---- Azure Accent ---- */
+[data-accent="azure"] {
+  --accent-primary-rgb: var(--color-azure-500);
+  --accent-hover-rgb: var(--color-azure-400);
+  --accent-active-rgb: var(--color-azure-600);
+
+  --accent-primary: #0ea5e9;
+  --accent-hover: #38bdf8;
+  --accent-active: #0284c7;
+  --accent-current: #0ea5e9;
+
+  --accent-subtle: rgba(14, 165, 233, 0.12);
+  --accent-border: rgba(14, 165, 233, 0.28);
+  --accent-contrast: #ffffff;
+
+  /* Backward Compatibility Aliases */
+  --accent-glow: rgba(14, 165, 233, 0.18);
+  --gradient-accent: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+  --gradient-glow: radial-gradient(ellipse at 50% 0%, rgba(14, 165, 233, 0.08) 0%, transparent 60%);
+}

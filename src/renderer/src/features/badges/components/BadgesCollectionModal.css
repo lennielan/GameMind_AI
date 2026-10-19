@@ -1,0 +1,827 @@
+﻿/* BadgesCollectionModal.css — GameMind Design System */
+
+.badges-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.badges-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: 85vh;
+  background: var(--surface-1, #12121a);
+  border: 1px solid var(--border-default, rgba(255, 255, 255, 0.12));
+  border-radius: var(--radius-xl, 16px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: var(--text-primary, #ffffff);
+}
+
+.badges-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-default, rgba(255, 255, 255, 0.08));
+  background: var(--surface-2, #181824);
+}
+
+.badges-modal-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary, #ffffff);
+  margin: 0;
+}
+
+.badges-modal-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary, #9999aa);
+  margin-top: 4px;
+}
+
+.badges-modal-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary, #777788);
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.badges-modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary, #ffffff);
+}
+
+.badges-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.badges-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.badges-modal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.badges-modal-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.badges-modal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.badges-modal-loading-spinner {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--accent-primary, #60a5fa);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.badge-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background: var(--surface-2, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border-default, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-lg, 12px);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.badge-card:hover {
+  border-color: var(--border-light, rgba(255, 255, 255, 0.18));
+  background: var(--surface-3, rgba(255, 255, 255, 0.05));
+}
+
+.badge-card--tiered {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.badge-card--boss {
+  background: linear-gradient(135deg, rgba(255, 77, 77, 0.12), rgba(255, 170, 0, 0.08), rgba(236, 72, 153, 0.1)) !important;
+  border: 1px solid rgba(255, 77, 77, 0.5) !important;
+  box-shadow: 0 0 25px rgba(255, 77, 77, 0.25), inset 0 0 15px rgba(255, 215, 0, 0.15) !important;
+}
+
+.badge-card--boss .badge-card-icon {
+  background: rgba(255, 77, 77, 0.25) !important;
+  color: #ffcc00 !important;
+  border: 1px solid rgba(255, 215, 0, 0.8) !important;
+  box-shadow: 0 0 12px rgba(255, 204, 0, 0.6) !important;
+}
+
+/* Legendary AI Core Badge */
+.badge-card--legend {
+  background: linear-gradient(135deg, rgba(255, 159, 243, 0.09), rgba(168, 85, 247, 0.05), rgba(99, 102, 241, 0.03)) !important;
+  border: 1px solid rgba(255, 159, 243, 0.4) !important;
+  box-shadow: 0 4px 22px rgba(255, 159, 243, 0.14), inset 0 0 16px rgba(255, 159, 243, 0.06) !important;
+}
+
+.badge-card-icon--legend {
+  background: rgba(255, 159, 243, 0.18) !important;
+  color: #ff9ff3 !important;
+  border: 1px solid rgba(255, 159, 243, 0.7) !important;
+  box-shadow: 0 0 14px rgba(255, 159, 243, 0.35) !important;
+}
+
+.badge-card--locked {
+  opacity: 0.65;
+  filter: grayscale(0.6);
+}
+
+.badge-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.badge-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.badge-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.badge-card-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge-card-name--tiered .badge-card-name__prefix {
+  color: var(--text-primary, #ffffff);
+}
+
+.badge-card-status {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-tier-companion-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(96, 165, 250, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.28);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-card-status--earned {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.badge-card-status--locked {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-tertiary, #888899);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.badge-card-desc {
+  font-size: 13px;
+  color: var(--text-secondary, #94a3b8);
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+/* Tier Progress Section */
+.badge-tier-progress-box {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.badge-tier-progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.badge-tier-progress-title {
+  color: var(--text-secondary, #aaa);
+}
+
+.badge-tier-progress-value {
+  font-weight: 700;
+  color: var(--text-primary, #fff);
+  font-family: var(--font-mono);
+}
+
+.badge-tier-progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.badge-tier-progress-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.badge-tier-next-info {
+  font-size: 11px;
+  color: var(--text-tertiary, #888);
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* AI Companion Evolution Matrix / Tier Ladder */
+.badge-tier-ladder {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.badge-tier-ladder-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.badge-tier-ladder-title {
+  color: var(--text-primary, #ffffff);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.badge-tier-ladder-active-indicator {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--accent-primary, #60a5fa);
+  font-weight: 600;
+}
+
+.badge-tier-ladder-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 6px;
+}
+
+.tier-ladder-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 2px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: default;
+  position: relative;
+}
+
+.tier-ladder-step-icon-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.tier-ladder-step-num {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-tertiary, #777788);
+}
+
+.tier-ladder-step-name {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--text-secondary, #9999aa);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.tier-ladder-step--unlocked .tier-ladder-step-num {
+  color: var(--text-primary, #ffffff);
+}
+
+.tier-ladder-step--current {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+.tier-ladder-step--current .tier-ladder-step-icon-box {
+  box-shadow: 0 0 12px currentColor;
+}
+
+.tier-ladder-step--current .tier-ladder-step-num {
+  font-weight: 800;
+  color: var(--text-primary, #ffffff);
+}
+
+.tier-ladder-step--locked {
+  opacity: 0.42;
+  filter: grayscale(0.8);
+}
+
+.tier-ladder-step--next {
+  opacity: 0.85;
+  filter: grayscale(0.2);
+}
+
+.tier-ladder-step-pulse {
+  position: absolute;
+  inset: -3px;
+  border-radius: 9px;
+  border: 1.5px solid currentColor;
+  animation: ladderStepPulse 2s ease-in-out infinite;
+}
+
+@keyframes ladderStepPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+/* ============================================================
+   PROGRESSIVE AI COMPANION TIER HIERARCHY (Dark Theme)
+   ============================================================ */
+.badge-card--tier-1 {
+  border-color: rgba(148, 163, 184, 0.3) !important;
+}
+
+.badge-card--tier-2 {
+  border-color: rgba(34, 197, 94, 0.4) !important;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.05), rgba(255, 255, 255, 0.01)) !important;
+  box-shadow: 0 4px 18px rgba(34, 197, 94, 0.1) !important;
+}
+
+.badge-card--tier-3 {
+  border-color: rgba(6, 182, 212, 0.45) !important;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.07), rgba(255, 255, 255, 0.01)) !important;
+  box-shadow: 0 4px 22px rgba(6, 182, 212, 0.14) !important;
+}
+
+.badge-card--tier-4 {
+  border-color: rgba(168, 85, 247, 0.5) !important;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.09), rgba(99, 102, 241, 0.03)) !important;
+  box-shadow: 0 6px 26px rgba(168, 85, 247, 0.18), inset 0 0 12px rgba(168, 85, 247, 0.06) !important;
+}
+
+.badge-card--tier-5 {
+  border-color: rgba(234, 179, 8, 0.6) !important;
+  background: linear-gradient(135deg, rgba(234, 179, 8, 0.11), rgba(245, 158, 11, 0.04)) !important;
+  box-shadow: 0 6px 28px rgba(234, 179, 8, 0.22), inset 0 0 16px rgba(234, 179, 8, 0.08) !important;
+}
+
+.badge-card--tier-6 {
+  border-color: rgba(56, 189, 248, 0.65) !important;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.13), rgba(14, 165, 233, 0.05), rgba(99, 102, 241, 0.04)) !important;
+  box-shadow: 0 8px 32px rgba(56, 189, 248, 0.26), inset 0 0 20px rgba(56, 189, 248, 0.1) !important;
+}
+
+.badge-card--tier-7 {
+  border-color: rgba(244, 63, 94, 0.7) !important;
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(225, 29, 72, 0.06), rgba(159, 18, 57, 0.04)) !important;
+  box-shadow: 0 8px 36px rgba(244, 63, 94, 0.3), inset 0 0 24px rgba(244, 63, 94, 0.12) !important;
+}
+
+.badge-card--tier-8 {
+  border-color: rgba(236, 72, 153, 0.8) !important;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.18), rgba(168, 85, 247, 0.09), rgba(99, 102, 241, 0.06)) !important;
+  box-shadow: 0 10px 40px rgba(236, 72, 153, 0.35), inset 0 0 28px rgba(236, 72, 153, 0.16) !important;
+}
+
+.badge-card--tier-9 {
+  border-color: rgba(251, 191, 36, 0.9) !important;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.22), rgba(245, 158, 11, 0.14), rgba(217, 119, 6, 0.08)) !important;
+  box-shadow: 0 12px 48px rgba(251, 191, 36, 0.4), inset 0 0 35px rgba(251, 191, 36, 0.22) !important;
+  position: relative;
+}
+
+.badge-card--tier-9::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fbbf24, #fef08a, #fbbf24, transparent);
+  animation: goldShimmer 3s ease-in-out infinite;
+}
+
+@keyframes goldShimmer {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.badge-card-how-to-get {
+  margin-top: auto;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 12px;
+  color: var(--text-secondary, #bbbbcc);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.badge-card-how-to-get-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent-primary, #60a5fa);
+}
+
+.badge-card-how-to-get-text {
+  line-height: 1.35;
+}
+
+.badge-card-how-to-get-label {
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.badge-card-granted-at {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--text-tertiary, #888899);
+}
+
+/* ============================================================
+   LIGHT THEME OVERRIDES & ENHANCEMENTS
+   ============================================================ */
+[data-theme="light"] .badges-modal-overlay {
+  background: rgba(28, 32, 45, 0.45);
+  backdrop-filter: blur(8px);
+}
+
+[data-theme="light"] .badges-modal-container {
+  background: #ffffff;
+  border: 1px solid rgba(28, 32, 45, 0.12);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.05);
+  color: #1c202d;
+}
+
+[data-theme="light"] .badges-modal-header {
+  background: #f8f9fb;
+  border-bottom: 1px solid rgba(28, 32, 45, 0.08);
+}
+
+[data-theme="light"] .badges-modal-title {
+  color: #1c202d;
+}
+
+[data-theme="light"] .badges-modal-subtitle {
+  color: #5d6274;
+}
+
+[data-theme="light"] .badges-modal-close-btn {
+  background: #f0f2f6;
+  border: 1px solid rgba(28, 32, 45, 0.08);
+  color: #5d6274;
+}
+
+[data-theme="light"] .badges-modal-close-btn:hover {
+  background: #e4e7ee;
+  color: #1c202d;
+}
+
+[data-theme="light"] .badge-card {
+  background: #ffffff;
+  border: 1px solid rgba(28, 32, 45, 0.09);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .badge-card:hover {
+  background: #fcfdfe;
+  border-color: rgba(28, 32, 45, 0.18);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .badge-card-name {
+  color: #1c202d;
+}
+
+[data-theme="light"] .badge-card-desc {
+  color: #4b5563;
+}
+
+[data-theme="light"] .badge-card--tiered {
+  background: #ffffff !important;
+  border: 1px solid rgba(28, 32, 45, 0.12) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .badge-card-name--tiered .badge-card-name__prefix {
+  color: #1c202d;
+}
+
+[data-theme="light"] .badge-card-name--tiered .badge-card-name__tier {
+  filter: brightness(0.8) saturate(1.25);
+}
+
+[data-theme="light"] .badge-card--tiered .badge-card-icon {
+  filter: brightness(0.85);
+}
+
+[data-theme="light"] .badge-card--boss {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.07), rgba(245, 158, 11, 0.08)) !important;
+  border: 1px solid rgba(245, 158, 11, 0.4) !important;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.14) !important;
+}
+
+[data-theme="light"] .badge-card--boss .badge-card-icon {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #d97706 !important;
+  border: 1px solid rgba(245, 158, 11, 0.5) !important;
+  box-shadow: none !important;
+}
+
+/* Legendary AI Core in Light Theme */
+[data-theme="light"] .badge-card--legend {
+  background: linear-gradient(135deg, rgba(244, 114, 182, 0.08), rgba(192, 38, 211, 0.04)) !important;
+  border: 1px solid rgba(219, 39, 119, 0.35) !important;
+  box-shadow: 0 4px 16px rgba(219, 39, 119, 0.1) !important;
+}
+
+[data-theme="light"] .badge-card-icon--legend {
+  background: rgba(244, 114, 182, 0.15) !important;
+  color: #db2777 !important;
+  border: 1px solid rgba(219, 39, 119, 0.5) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="light"] .badge-card--locked {
+  background: #f8f9fb;
+  border-color: rgba(28, 32, 45, 0.06);
+  opacity: 0.78;
+  filter: grayscale(0.7);
+}
+
+[data-theme="light"] .badge-card--locked .badge-card-icon {
+  background-color: rgba(28, 32, 45, 0.05) !important;
+  border-color: rgba(28, 32, 45, 0.1) !important;
+  color: #8f93a3 !important;
+}
+
+[data-theme="light"] .badge-card-status--earned {
+  background: rgba(5, 150, 105, 0.08);
+  color: #059669;
+  border: 1px solid rgba(5, 150, 105, 0.22);
+}
+
+[data-theme="light"] .badge-card-status--locked {
+  background: rgba(28, 32, 45, 0.05);
+  color: #6b7280;
+  border: 1px solid rgba(28, 32, 45, 0.1);
+}
+
+[data-theme="light"] .badge-tier-companion-pill {
+  background: rgba(2, 132, 199, 0.08);
+  color: #0284c7;
+  border-color: rgba(2, 132, 199, 0.22);
+}
+
+[data-theme="light"] .badge-tier-progress-box {
+  background: #f4f5f8;
+  border: 1px solid rgba(28, 32, 45, 0.08);
+}
+
+[data-theme="light"] .badge-tier-progress-title {
+  color: #5d6274;
+}
+
+[data-theme="light"] .badge-tier-progress-value {
+  color: #1c202d;
+}
+
+[data-theme="light"] .badge-tier-progress-bar-bg {
+  background: rgba(28, 32, 45, 0.1);
+}
+
+[data-theme="light"] .badge-tier-next-info {
+  color: #5d6274;
+}
+
+[data-theme="light"] .badge-tier-next-info strong {
+  color: #1c202d;
+}
+
+/* AI Companion Evolution Ladder in Light Theme */
+[data-theme="light"] .badge-tier-ladder {
+  background: #f4f5f8;
+  border: 1px solid rgba(28, 32, 45, 0.08);
+}
+
+[data-theme="light"] .badge-tier-ladder-title {
+  color: #1c202d;
+}
+
+[data-theme="light"] .badge-tier-ladder-active-indicator {
+  color: #0284c7;
+}
+
+[data-theme="light"] .tier-ladder-step-icon-box {
+  background: #ffffff;
+  border-color: rgba(28, 32, 45, 0.1);
+}
+
+[data-theme="light"] .tier-ladder-step-num {
+  color: #5d6274;
+}
+
+[data-theme="light"] .tier-ladder-step-name {
+  color: #5d6274;
+}
+
+[data-theme="light"] .tier-ladder-step--unlocked .tier-ladder-step-num {
+  color: #1c202d;
+}
+
+[data-theme="light"] .tier-ladder-step--current {
+  background: #e9ecf2;
+}
+
+[data-theme="light"] .tier-ladder-step--current .tier-ladder-step-icon-box {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .tier-ladder-step--current .tier-ladder-step-num {
+  color: #1c202d;
+}
+
+/* Progressive AI Companion Tier Hierarchy (Light Theme) */
+[data-theme="light"] .badge-card--tier-1 {
+  background: #ffffff !important;
+  border-color: rgba(148, 163, 184, 0.35) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .badge-card--tier-2 {
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.04), #ffffff) !important;
+  border-color: rgba(5, 150, 105, 0.35) !important;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.08) !important;
+}
+
+[data-theme="light"] .badge-card--tier-3 {
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.05), #ffffff) !important;
+  border-color: rgba(8, 145, 178, 0.4) !important;
+  box-shadow: 0 4px 16px rgba(8, 145, 178, 0.1) !important;
+}
+
+[data-theme="light"] .badge-card--tier-4 {
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.06), #ffffff) !important;
+  border-color: rgba(147, 51, 234, 0.4) !important;
+  box-shadow: 0 4px 18px rgba(147, 51, 234, 0.12) !important;
+}
+
+[data-theme="light"] .badge-card--tier-5 {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.07), #ffffff) !important;
+  border-color: rgba(217, 119, 6, 0.45) !important;
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.14) !important;
+}
+
+[data-theme="light"] .badge-card--tier-6 {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.07), #ffffff) !important;
+  border-color: rgba(2, 132, 199, 0.45) !important;
+  box-shadow: 0 6px 22px rgba(2, 132, 199, 0.15) !important;
+}
+
+[data-theme="light"] .badge-card--tier-7 {
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.08), #ffffff) !important;
+  border-color: rgba(225, 29, 72, 0.45) !important;
+  box-shadow: 0 6px 24px rgba(225, 29, 72, 0.16) !important;
+}
+
+[data-theme="light"] .badge-card--tier-8 {
+  background: linear-gradient(135deg, rgba(192, 38, 211, 0.08), #ffffff) !important;
+  border-color: rgba(192, 38, 211, 0.5) !important;
+  box-shadow: 0 8px 26px rgba(192, 38, 211, 0.18) !important;
+}
+
+[data-theme="light"] .badge-card--tier-9 {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(254, 243, 199, 0.4), #ffffff) !important;
+  border-color: rgba(217, 119, 6, 0.65) !important;
+  box-shadow: 0 8px 30px rgba(217, 119, 6, 0.22) !important;
+}
+
+[data-theme="light"] .badge-card--tier-9::after {
+  background: linear-gradient(90deg, transparent, #d97706, #fbbf24, #d97706, transparent);
+}
+
+[data-theme="light"] .badge-card-how-to-get {
+  background: #f4f5f8;
+  border: 1px solid rgba(28, 32, 45, 0.08);
+  color: #4b5563;
+}
+
+[data-theme="light"] .badge-card-how-to-get-label {
+  color: #1c202d;
+}
+
+[data-theme="light"] .badge-card-how-to-get-icon {
+  color: var(--accent-primary, #3b82f6);
+}
+
+[data-theme="light"] .badge-card-granted-at {
+  color: #6b7280;
+}
+
+[data-theme="light"] .badges-modal-loading-spinner {
+  border-color: rgba(28, 32, 45, 0.1);
+  border-top-color: var(--accent-primary, #3b82f6);
+}
+
+[data-theme="light"] .badges-modal-body::-webkit-scrollbar-thumb {
+  background: rgba(28, 32, 45, 0.15);
+}
+
+[data-theme="light"] .badges-modal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(28, 32, 45, 0.25);
+}

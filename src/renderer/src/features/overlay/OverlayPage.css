@@ -1,0 +1,279 @@
+/* ============================================================
+   GameMind AI — Desktop OS Overlay Notification
+   Compact glassmorphic styling, dynamic accent & multi-theme support
+   ============================================================ */
+
+.overlay-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  pointer-events: none;
+  font-family: 'TT Paplane Trial', 'TT Paplane', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Base Card Shell — Clean, compact, refined */
+.overlay-card {
+  pointer-events: auto;
+  width: 360px;
+  min-height: 72px;
+  background: var(--glass-bg, rgba(18, 19, 26, 0.95));
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-default, rgba(255, 255, 255, 0.1));
+  border-radius: 13px;
+  padding: 10px 14px 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 
+    0 12px 30px -4px rgba(0, 0, 0, 0.45),
+    0 3px 10px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  box-sizing: border-box;
+  transition: 
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.18s ease;
+}
+
+.overlay-card:hover {
+  background: var(--surface-overlay, rgba(26, 27, 36, 0.97));
+  border-color: var(--accent-primary, rgba(255, 255, 255, 0.2));
+  box-shadow: 
+    0 16px 36px -4px rgba(0, 0, 0, 0.55),
+    0 4px 14px var(--accent-glow, rgba(16, 185, 129, 0.25));
+  transform: translateY(-2px);
+}
+
+/* Subtle Top Edge Specular Light */
+.overlay-top-glow {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Left Accent Indicator Stripe — Uses dynamic accent color */
+.overlay-accent-bar {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 0;
+  width: 3px;
+  background: var(--accent-primary, #10b981);
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-shadow: 0 0 8px var(--accent-glow, rgba(16, 185, 129, 0.45));
+}
+
+/* Avatar & Icon Container */
+.overlay-avatar-wrapper {
+  flex-shrink: 0;
+}
+
+.overlay-avatar-container {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface-2, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-subtle, rgba(255, 255, 255, 0.1));
+  color: var(--accent-primary, #ffffff);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* System Avatar — Dynamic accent tone */
+.overlay-avatar-system {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-subtle, rgba(16, 185, 129, 0.15));
+  border: 1px solid rgba(var(--accent-primary-rgb, 16, 185, 129), 0.3);
+  border-radius: 10px;
+  color: var(--accent-primary, #10b981);
+}
+
+.overlay-ai-icon-svg {
+  animation: overlayPulse 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes overlayPulse {
+  0% { transform: scale(0.96); opacity: 0.85; }
+  100% { transform: scale(1.04); opacity: 1; }
+}
+
+/* Content Layout */
+.overlay-content {
+  flex: 1;
+  min-width: 0;
+  padding-right: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+
+.overlay-header {
+  display: flex;
+  align-items: center;
+}
+
+.overlay-title-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary, rgba(240, 240, 244, 0.65));
+  line-height: 1.2;
+}
+
+.overlay-title-icon {
+  flex-shrink: 0;
+  color: var(--accent-primary, #10b981);
+}
+
+.overlay-username-highlight {
+  color: var(--accent-primary, #10b981);
+  font-weight: 700;
+}
+
+/* Message Text */
+.overlay-text {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-primary, #f0f0f4);
+  margin: 0;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+/* Close Button */
+.overlay-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary, rgba(240, 240, 244, 0.4));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+  z-index: 100;
+  -webkit-app-region: no-drag;
+}
+
+.overlay-close-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-primary, #ffffff);
+  transform: scale(1.06);
+}
+
+/* ============================================================
+   THEME ADAPTATIONS
+   ============================================================ */
+
+/* ---- LIGHT THEME ---- */
+[data-theme="light"] .overlay-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(28, 32, 45, 0.1);
+  box-shadow: 
+    0 12px 30px -4px rgba(15, 23, 42, 0.18),
+    0 3px 10px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .overlay-card:hover {
+  background: #ffffff;
+  border-color: var(--accent-primary, rgba(16, 185, 129, 0.4));
+  box-shadow: 
+    0 16px 36px -4px rgba(15, 23, 42, 0.22),
+    0 4px 14px var(--accent-glow, rgba(16, 185, 129, 0.2));
+}
+
+[data-theme="light"] .overlay-top-glow {
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 50%, transparent 100%);
+}
+
+[data-theme="light"] .overlay-title-badge {
+  color: #5d6274;
+}
+
+[data-theme="light"] .overlay-text {
+  color: #1c202d;
+  font-weight: 600;
+}
+
+[data-theme="light"] .overlay-avatar-container {
+  background: rgba(28, 32, 45, 0.04);
+  border-color: rgba(28, 32, 45, 0.08);
+}
+
+[data-theme="light"] .overlay-avatar-system {
+  background: var(--accent-subtle, rgba(16, 185, 129, 0.12));
+  border-color: rgba(var(--accent-primary-rgb, 16, 185, 129), 0.25);
+  color: var(--accent-primary, #059669);
+}
+
+[data-theme="light"] .overlay-close-btn {
+  color: #8f93a3;
+}
+
+[data-theme="light"] .overlay-close-btn:hover {
+  background: rgba(28, 32, 45, 0.08);
+  color: #1c202d;
+}
+
+/* ---- MIDNIGHT THEME ---- */
+[data-theme="midnight"] .overlay-card {
+  background: rgba(8, 10, 18, 0.96);
+  border-color: rgba(99, 102, 241, 0.18);
+  box-shadow: 
+    0 14px 34px -4px rgba(0, 0, 0, 0.7),
+    0 3px 12px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+

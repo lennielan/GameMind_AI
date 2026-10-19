@@ -1,0 +1,163 @@
+/* ============================================================
+   Button — Neo-Terminal / Industrial Tech Button Component
+   High-contrast, crisp 1px borders, compact radius, rapid transitions
+   ============================================================ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1;
+  user-select: none;
+  border-radius: var(--radius-sm, 4px);
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background-color var(--transition-fast, 150ms ease-out),
+              border-color var(--transition-fast, 150ms ease-out),
+              color var(--transition-fast, 150ms ease-out),
+              opacity var(--transition-fast, 150ms ease-out);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--accent-primary, #8b5cf6);
+  outline-offset: 1px;
+}
+
+.button:disabled,
+.button.loading {
+  cursor: not-allowed;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/* ---- Sizes ---- */
+.sizeSm {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 12px;
+  border-radius: var(--radius-xs, 2px);
+}
+
+.sizeMd {
+  height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+  border-radius: var(--radius-sm, 4px);
+}
+
+.sizeLg {
+  height: 42px;
+  padding: 0 18px;
+  font-size: 14px;
+  border-radius: var(--radius-sm, 4px);
+}
+
+/* ---- Primary Variant ---- */
+.variantPrimary {
+  background-color: var(--btn-primary-bg, #f4f4f5);
+  color: var(--btn-primary-text, #09090b);
+  border-color: transparent;
+}
+
+.variantPrimary:hover:not(:disabled) {
+  background-color: var(--btn-primary-hover, #e4e4e7);
+}
+
+.variantPrimary:active:not(:disabled) {
+  background-color: var(--color-zinc-300, #d4d4d8);
+}
+
+/* ---- Secondary Variant ---- */
+.variantSecondary {
+  background-color: var(--btn-secondary-bg, #18181b);
+  border-color: var(--btn-secondary-border, #3f3f46);
+  color: var(--btn-secondary-text, #d4d4d8);
+}
+
+.variantSecondary:hover:not(:disabled) {
+  background-color: var(--btn-secondary-hover, #27272a);
+  border-color: var(--border-focus, #52525b);
+  color: var(--text-primary, #ffffff);
+}
+
+.variantSecondary:active:not(:disabled) {
+  background-color: #1e1e24;
+}
+
+/* ---- Terminal / Monospace Variant ---- */
+.variantTerminal {
+  font-family: var(--font-family-mono, monospace);
+  font-variant-numeric: tabular-nums;
+  background-color: transparent;
+  border-color: var(--border-default, #27272a);
+  color: var(--text-secondary, #a1a1aa);
+  border-radius: var(--radius-xs, 2px);
+}
+
+.variantTerminal:hover:not(:disabled) {
+  border-color: var(--border-focus, #52525b);
+  color: var(--text-primary, #ffffff);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* ---- Ghost Variant ---- */
+.variantGhost {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--text-secondary, #a1a1aa);
+}
+
+.variantGhost:hover:not(:disabled) {
+  background-color: var(--surface-overlay, #27272a);
+  color: var(--text-primary, #ffffff);
+}
+
+/* ---- Danger Variant ---- */
+.variantDanger {
+  background-color: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.28);
+  color: #ef4444;
+}
+
+.variantDanger:hover:not(:disabled) {
+  background-color: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.45);
+}
+
+/* ---- Icons & Spinner ---- */
+.iconLeft,
+.iconRight {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: buttonSpin 600ms linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes buttonSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Light Theme Tweaks ---- */
+:global([data-theme="light"]) .variantTerminal:hover:not(:disabled) {
+  background-color: rgba(0, 0, 0, 0.04);
+}

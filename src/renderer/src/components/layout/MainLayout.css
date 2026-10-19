@@ -1,0 +1,43 @@
+/* ============================================================
+   Main Layout Styles
+   Neo-Terminal / Industrial Tech Shell
+   ============================================================ */
+
+.app-layout {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-app, #09090b);
+}
+
+.app-layout__body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.app-layout__content {
+  flex: 1;
+  flex-grow: 1;
+  overflow: hidden;
+  padding-top: var(--titlebar-height, 40px);
+  position: relative;
+  transition: width 0.3s ease;
+  background-color: var(--bg-app, #09090b);
+}
+
+.app-layout__scroll {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-8);
+  position: relative;
+  z-index: 1;
+}
+
+.app-layout__scroll--full-bleed {
+  padding: 0;
+  overflow: hidden;
+}

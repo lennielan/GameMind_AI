@@ -1,0 +1,307 @@
+/* ============================================================
+   Updater Notification Component Styles — Theme & Accent Adaptive
+   ============================================================ */
+
+.updater-notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: 320px;
+  background: var(--glass-bg, rgba(18, 19, 26, 0.95));
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-default, rgba(255, 255, 255, 0.12));
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: 
+    0 16px 36px -4px rgba(0, 0, 0, 0.45),
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: var(--text-primary, #ffffff);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: 'TT Paplane Trial', 'TT Paplane', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: 
+    background 0.25s ease, 
+    border-color 0.25s ease, 
+    box-shadow 0.25s ease, 
+    color 0.25s ease;
+}
+
+/* Subtle Top Edge Specular Light */
+.updater-notification__top-glow {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Left Accent Indicator Stripe — Matches current Accent Color */
+.updater-notification__accent-bar {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 0;
+  width: 3px;
+  background: var(--accent-primary, #6366f1);
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  box-shadow: 0 0 8px var(--accent-glow, rgba(99, 102, 241, 0.45));
+}
+
+.updater-notification__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.updater-notification__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--accent-subtle, rgba(99, 102, 241, 0.15));
+  color: var(--accent-primary, #6366f1);
+  flex-shrink: 0;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  transition: all 0.2s ease;
+}
+
+.updater-notification__icon--success {
+  background: var(--success-subtle, rgba(34, 197, 94, 0.15));
+  color: var(--success, #22c55e);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.updater-notification__icon--error {
+  background: var(--error-subtle, rgba(239, 68, 68, 0.15));
+  color: var(--error, #ef4444);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.updater-notification__header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.updater-notification__title {
+  font-size: 13.5px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary, #ffffff);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+.updater-notification__close {
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary, rgba(240, 240, 244, 0.4));
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s ease;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.updater-notification__close:hover {
+  color: var(--text-primary, #ffffff);
+  background: var(--surface-hover, rgba(255, 255, 255, 0.1));
+}
+
+.updater-notification__progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.updater-notification__progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--surface-raised, rgba(255, 255, 255, 0.08));
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.05));
+  box-sizing: border-box;
+}
+
+.updater-notification__progress-fill {
+  height: 100%;
+  background: var(--gradient-accent, var(--accent-primary, #6366f1));
+  border-radius: 4px;
+  transition: width 0.25s ease-out;
+  box-shadow: 0 0 8px var(--accent-glow, rgba(99, 102, 241, 0.4));
+}
+
+.updater-notification__progress-text {
+  font-size: 12px;
+  color: var(--text-secondary, rgba(240, 240, 244, 0.65));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  font-feature-settings: 'tnum';
+}
+
+.updater-notification__version {
+  color: var(--text-secondary, rgba(240, 240, 244, 0.65));
+}
+
+.updater-notification__percent {
+  font-weight: 600;
+  color: var(--text-primary, #ffffff);
+}
+
+.updater-notification__button {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent-primary, #6366f1);
+  color: var(--text-inverse, #ffffff);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px var(--accent-glow, rgba(99, 102, 241, 0.35));
+  position: relative;
+  z-index: 1;
+}
+
+.updater-notification__button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+  box-shadow: 0 6px 18px var(--accent-glow, rgba(99, 102, 241, 0.5));
+}
+
+.updater-notification__button:active {
+  transform: translateY(0);
+}
+
+.updater-notification__error-text {
+  font-size: 12px;
+  color: var(--error, #ef4444);
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+  background: var(--error-subtle, rgba(239, 68, 68, 0.1));
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* ============================================================
+   LIGHT THEME OVERRIDES
+   ============================================================ */
+
+[data-theme="light"] .updater-notification {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(28, 32, 45, 0.12);
+  box-shadow: 
+    0 16px 36px -4px rgba(28, 32, 45, 0.14), 
+    0 4px 12px rgba(28, 32, 45, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  color: #1c202d;
+}
+
+[data-theme="light"] .updater-notification__top-glow {
+  background: linear-gradient(90deg, transparent 0%, rgba(28, 32, 45, 0.08) 50%, transparent 100%);
+}
+
+[data-theme="light"] .updater-notification__icon {
+  background: var(--accent-subtle, rgba(var(--accent-primary-rgb), 0.12));
+  color: var(--accent-primary, #6366f1);
+  border-color: rgba(28, 32, 45, 0.08);
+}
+
+[data-theme="light"] .updater-notification__icon--success {
+  background: rgba(5, 150, 105, 0.12);
+  color: #059669;
+  border-color: rgba(5, 150, 105, 0.2);
+}
+
+[data-theme="light"] .updater-notification__icon--error {
+  background: rgba(220, 38, 38, 0.12);
+  color: #dc2626;
+  border-color: rgba(220, 38, 38, 0.2);
+}
+
+[data-theme="light"] .updater-notification__title {
+  color: #1c202d;
+}
+
+[data-theme="light"] .updater-notification__close {
+  color: #8f93a3;
+}
+
+[data-theme="light"] .updater-notification__close:hover {
+  color: #1c202d;
+  background: rgba(28, 32, 45, 0.08);
+}
+
+[data-theme="light"] .updater-notification__progress-bar {
+  background: #e9ecf2;
+  border-color: rgba(28, 32, 45, 0.08);
+}
+
+[data-theme="light"] .updater-notification__progress-text {
+  color: #5d6274;
+}
+
+[data-theme="light"] .updater-notification__version {
+  color: #5d6274;
+  font-weight: 500;
+}
+
+[data-theme="light"] .updater-notification__percent {
+  color: #1c202d;
+  font-weight: 600;
+}
+
+[data-theme="light"] .updater-notification__button {
+  color: #ffffff;
+}
+
+[data-theme="light"] .updater-notification__error-text {
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.08);
+  border-color: rgba(220, 38, 38, 0.18);
+}
+
+/* ============================================================
+   MIDNIGHT / AMOLED THEME OVERRIDES
+   ============================================================ */
+
+[data-theme="midnight"] .updater-notification {
+  background: rgba(14, 14, 16, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.8),
+    0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="midnight"] .updater-notification__progress-bar {
+  background: rgba(255, 255, 255, 0.08);
+}
